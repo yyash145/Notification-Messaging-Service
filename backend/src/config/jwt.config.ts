@@ -5,3 +5,5 @@ export const jwtConfig = {
         expiresIn: process.env.JWT_EXPIRES_IN || '3600s', // default to 1 hour
     },
 };
+
+export const ROLES_KEY = 'roles';

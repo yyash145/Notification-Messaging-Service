@@ -3,4 +3,8 @@ export declare class UsersController {
         message: string;
         user: any;
     };
+    getAllUsers(): never[];
+    getAdminData(): {
+        message: string;
+    };
 }

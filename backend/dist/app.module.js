@@ -18,12 +18,15 @@ const messaging_module_1 = require("./modules/messaging/messaging.module");
 const billing_module_1 = require("./modules/billing/billing.module");
 const retention_module_1 = require("./modules/retention/retention.module");
 const health_module_1 = require("./modules/health/health.module");
+const typeorm_module_1 = require("@nestjs/typeorm/dist/typeorm.module");
+const typeorm_config_1 = require("./database/typeorm.config");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            typeorm_module_1.TypeOrmModule.forRoot(typeorm_config_1.typeOrmConfig),
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
             permissions_module_1.PermissionsModule,

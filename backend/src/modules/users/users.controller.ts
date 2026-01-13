@@ -16,9 +16,9 @@ export class UsersController {
   }
 
   // ✅ Public route
-  @Get('allUsersß')
+  @Get('getAllUsers')
   getAllUsers() {
-    return [{ id: 1, email: 'test@example.com' }];
+    return [];
   }
 
   // 🔒 Admin-only route

@@ -4,3 +4,4 @@ export declare const jwtConfig: {
         expiresIn: string;
     };
 };
+export declare const ROLES_KEY = "roles";
