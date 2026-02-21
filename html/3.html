@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Solution - WhatsApp Notification System</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .brand-green {
+            color: #25D366;
+        }
+        .bg-brand-green {
+            background-color: #25D366;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 32px;
+            transition: transform 0.3s ease;
+        }
+        .pillar-card:hover .icon-circle {
+            transform: scale(1.1);
+        }
+        /* Geometric accent */
+        .accent-shape {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Accents -->
+<div class="accent-shape w-96 h-96 bg-green-500 rounded-full -top-20 -right-20"></div>
+<div class="accent-shape w-64 h-64 bg-blue-500 rounded-full bottom-0 left-0"></div>
+<!-- Header Section -->
+<div class="w-full pt-16 px-20 text-center z-10">
+<span class="text-green-600 font-bold tracking-wider uppercase text-sm mb-2 block">The Solution</span>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins mb-6">
+            Bridging Excel &amp; WhatsApp with <br/><span class="text-green-600">Intelligent Automation</span>
+</h1>
+<p class="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            We transform static spreadsheet data into dynamic, timely client communications without changing your daily workflow.
+        </p>
+</div>
+<!-- Three Pillars Section -->
+<div class="flex-1 flex items-center justify-center px-16 space-x-8 z-10 pb-12">
+<!-- Pillar 1: Simplicity -->
+<div class="pillar-card bg-white w-1/3 h-96 rounded-2xl p-8 card-shadow border border-gray-100 flex flex-col items-center text-center relative overflow-hidden group hover:border-green-200 transition-colors duration-300">
+<div class="absolute top-0 left-0 w-full h-1 bg-gray-200 group-hover:bg-green-500 transition-colors duration-300"></div>
+<div class="icon-circle bg-green-50 text-green-600 group-hover:bg-green-100">
+<i class="fas fa-magic"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4 font-family-poppins">Simplicity</h3>
+<p class="text-gray-600 leading-relaxed mb-6">
+                Zero learning curve. Advocates simply upload their existing Excel schedules. No complex software training required.
+            </p>
+<ul class="text-sm text-gray-500 space-y-2 mt-auto text-left w-full pl-4 border-l-2 border-green-100">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i> Excel-first workflow</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i> Drag &amp; drop upload</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i> No engineering needed</li>
+</ul>
+</div>
+<!-- Pillar 2: Reliability -->
+<div class="pillar-card bg-white w-1/3 h-96 rounded-2xl p-8 card-shadow border border-gray-100 flex flex-col items-center text-center relative overflow-hidden group hover:border-blue-200 transition-colors duration-300">
+<div class="absolute top-0 left-0 w-full h-1 bg-gray-200 group-hover:bg-blue-500 transition-colors duration-300"></div>
+<div class="icon-circle bg-blue-50 text-blue-600 group-hover:bg-blue-100">
+<i class="fas fa-paper-plane"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4 font-family-poppins">Reliability</h3>
+<p class="text-gray-600 leading-relaxed mb-6">
+                Messages reach clients exactly when scheduled. Smart routing ensures high delivery rates unlike standard email.
+            </p>
+<ul class="text-sm text-gray-500 space-y-2 mt-auto text-left w-full pl-4 border-l-2 border-blue-100">
+<li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2 text-xs"></i> 98% Open rates</li>
+<li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2 text-xs"></i> Automated retries</li>
+<li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2 text-xs"></i> Delivery dashboard</li>
+</ul>
+</div>
+<!-- Pillar 3: Compliance -->
+<div class="pillar-card bg-white w-1/3 h-96 rounded-2xl p-8 card-shadow border border-gray-100 flex flex-col items-center text-center relative overflow-hidden group hover:border-purple-200 transition-colors duration-300">
+<div class="absolute top-0 left-0 w-full h-1 bg-gray-200 group-hover:bg-purple-500 transition-colors duration-300"></div>
+<div class="icon-circle bg-purple-50 text-purple-600 group-hover:bg-purple-100">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4 font-family-poppins">Compliance</h3>
+<p class="text-gray-600 leading-relaxed mb-6">
+                Built for professionals. We use official WhatsApp Business APIs to ensure consent management and data security.
+            </p>
+<ul class="text-sm text-gray-500 space-y-2 mt-auto text-left w-full pl-4 border-l-2 border-purple-100">
+<li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2 text-xs"></i> Official Business API</li>
+<li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2 text-xs"></i> Audit trail logs</li>
+<li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2 text-xs"></i> Opt-in management</li>
+</ul>
+</div>
+</div>
+<!-- Footer/Metric Bar -->
+<div class="w-full bg-gray-50 border-t border-gray-200 py-6 px-20">
+<div class="flex justify-between items-center">
+<div class="flex items-center text-gray-500">
+<span class="mr-4 font-semibold text-xs uppercase tracking-wider">Trusted Technology Stack:</span>
+<i class="fab fa-whatsapp text-2xl mr-4 text-green-600"></i>
+<i class="fab fa-aws text-2xl mr-4 text-gray-700"></i>
+<i class="fas fa-file-excel text-2xl text-green-700"></i>
+</div>
+<div class="text-right">
+<p class="text-sm font-medium text-gray-600">From spreadsheet to smartphone in <span class="text-green-600 font-bold">seconds</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

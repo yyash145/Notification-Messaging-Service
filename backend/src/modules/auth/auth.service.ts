@@ -29,30 +29,47 @@ export class AuthService {
     return this.generateToken(user.id, user.email);
   }
 
-  async login(email: string, password: string) {
-    const user = await this.usersService.findByEmail(email);
-    if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
+  // async login(email: string, password: string) {
+  //   const user = await this.usersService.findByEmail(email);
+  //   if (!user) {
+  //     throw new UnauthorizedException('Invalid credentials');
+  //   }
 
-    const valid = await bcrypt.compare(password, user.password);
-    if (!valid) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
+  //   const valid = await bcrypt.compare(password, user.password);
+  //   if (!valid) {
+  //     throw new UnauthorizedException('Invalid credentials');
+  //   }
 
-    return this.generateToken(user.id, user.email);
-  }
-
-  // async login(user: User) {
-  //   const accessToken = this.jwtService.sign({ sub: user.id });
-  //   const refreshToken = crypto.randomUUID();
-
-  //   user.refreshToken = await bcrypt.hash(refreshToken, 10);
-  //   await this.usersService.save(user);
-
-  //   return { accessToken, refreshToken };
+  //   return this.generateToken(user.id, user.email);
   // }
 
+  async login(user: User) {
+    const accessToken = this.jwtService.sign({ sub: user.id });
+    const refreshToken = crypto.randomUUID();
+
+    user.refreshToken = await bcrypt.hash(refreshToken, 10);
+    await this.usersService.save(user);
+
+    return { accessToken, refreshToken };
+  }
+
+  async validateUser(email: string, password: string): Promise<User> {
+    const user = await this.usersService.findByEmail(email);
+    if (!user) throw new UnauthorizedException();
+
+    const isValid = await bcrypt.compare(password, user.password);
+    if (!isValid) throw new UnauthorizedException();
+
+    return user;
+  }
+
+  async validateRefreshToken(userId: string, refreshToken: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user || !user.refreshToken) return null;
+
+    const isValid = await bcrypt.compare(refreshToken, user.refreshToken);
+    return isValid ? user : null;
+  }
 
   private generateToken(userId: string, email: string) {
     return {

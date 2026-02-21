@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Product Roadmap - WhatsApp Notification System</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-family-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Timeline Styles */
+        .timeline-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #E2E8F0;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 40%; /* Illustrative progress */
+            height: 4px;
+            background-color: #25D366;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        .milestone-node {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: white;
+            border: 4px solid #CBD5E1;
+            z-index: 10;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .milestone-node.completed {
+            border-color: #25D366;
+            background-color: #25D366;
+        }
+        
+        .milestone-node.active {
+            border-color: #25D366;
+            background-color: white;
+            transform: scale(1.2);
+            box-shadow: 0 0 0 6px rgba(37, 211, 102, 0.2);
+        }
+
+        .milestone-card {
+            width: 260px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .milestone-card::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 40px;
+            background-color: #E2E8F0;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+
+        /* Top cards connect down */
+        .card-top {
+            margin-bottom: 30px;
+        }
+        .card-top::before {
+            bottom: -40px;
+        }
+
+        /* Bottom cards connect up */
+        .card-bottom {
+            margin-top: 30px;
+        }
+        .card-bottom::before {
+            top: -40px;
+        }
+        
+        .milestone-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: #25D366;
+        }
+
+        /* Background grid */
+        .bg-grid-slate {
+            background-image: 
+                linear-gradient(rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body style="">
+<div class="slide-container bg-grid-slate">
+<!-- Header -->
+<div class="w-full pt-10 px-16 z-20 mb-2">
+<div class="flex items-center space-x-3 mb-2">
+<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Strategic Plan</span>
+<span class="text-gray-400 text-sm font-medium">18-Month Outlook</span>
+</div>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins">
+            Product <span class="text-blue-600">Roadmap</span>
+</h1>
+<p class="text-gray-500 mt-2 text-lg max-w-2xl">
+            From MVP validation to scaling with AI and ecosystem integrations.
+        </p>
+</div>
+<!-- Main Timeline Area -->
+<div class="flex-1 relative w-full px-16 flex items-center justify-center">
+<!-- Track Line -->
+<div class="absolute w-[1100px] h-1 bg-gray-200 top-1/2 transform -translate-y-1/2 z-0 rounded-full"></div>
+<div class="absolute w-[400px] h-1 bg-blue-500 top-1/2 left-[120px] transform -translate-y-1/2 z-0 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.3)]"></div> <!-- Progress -->
+<!-- Milestones Container -->
+<div class="relative w-full max-w-[1100px] h-[500px] flex justify-between items-center z-10 px-4">
+<!-- Q1-Q2: MVP (Top) -->
+<div class="flex flex-col items-center group relative h-full justify-center">
+<div class="absolute top-[80px]">
+<div class="milestone-card card-top border-l-4 border-l-blue-500" style="transform: translate(69.867674px, -9.981095px);">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-bold text-gray-800 text-lg font-family-poppins">MVP Pilot</h3>
+<span class="tag bg-blue-100 text-blue-700">Current</span>
+</div>
+<p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Q1–Q2 This Year</p>
+<ul class="space-y-2">
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-check-circle text-blue-500 mt-0.5 mr-2"></i>
+<span>Excel upload &amp; parsing engine</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-check-circle text-blue-500 mt-0.5 mr-2"></i>
+<span>Basic WhatsApp templates</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-check-circle text-blue-500 mt-0.5 mr-2"></i>
+<span>Pilot with 5-10 law firms</span>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+<!-- Q3: v1.0 (Bottom) -->
+<div class="flex flex-col items-center group relative h-full justify-center">
+
+<div class="absolute bottom-[80px]">
+<div class="milestone-card card-bottom border-l-4 border-l-indigo-500" style="transform: translate(18.147448px, -0.907372px);">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-bold text-gray-800 text-lg font-family-poppins">v1.0 Launch</h3>
+<span class="tag bg-indigo-100 text-indigo-700">Next Up</span>
+</div>
+<p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Q3 This Year</p>
+<ul class="space-y-2">
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-indigo-400 mt-1.5 mr-2"></i>
+<span>Multi-language support</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-indigo-400 mt-1.5 mr-2"></i>
+<span>Visual template editor</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-indigo-400 mt-1.5 mr-2"></i>
+<span>Consent capture UI</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-indigo-400 mt-1.5 mr-2"></i>
+<span>Detailed analytics dashboard</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Q4: Integrations (Top) -->
+<div class="flex flex-col items-center group relative h-full justify-center">
+<div class="absolute top-[80px]">
+<div class="milestone-card card-top border-l-4 border-l-purple-500" style="transform: translate(-11.795841px, 0px);">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-bold text-gray-800 text-lg font-family-poppins">Integrations</h3>
+<span class="tag bg-purple-100 text-purple-700">Expansion</span>
+</div>
+<p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Q4 This Year</p>
+<ul class="space-y-2">
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-purple-400 mt-1.5 mr-2"></i>
+<span>Google Calendar sync</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-purple-400 mt-1.5 mr-2"></i>
+<span>Outlook / Office 365 plugin</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-purple-400 mt-1.5 mr-2"></i>
+<span>Case management API hooks</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-circle text-[8px] text-purple-400 mt-1.5 mr-2"></i>
+<span>Role-based access control</span>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+<!-- Next Year: AI & Scale (Bottom) -->
+<div class="flex flex-col items-center group relative h-full justify-center">
+
+<div class="absolute bottom-[80px]">
+<div class="milestone-card card-bottom border-l-4 border-l-green-500 shadow-md" style="transform: translate(-47.183365px, -1.814745px);">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-bold text-gray-800 text-lg font-family-poppins">AI &amp; Scale</h3>
+<span class="tag bg-green-100 text-green-700">Growth</span>
+</div>
+<p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Q1 Next Year</p>
+<ul class="space-y-2">
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-magic text-green-500 mt-0.5 mr-2"></i>
+<span>AI-assisted message drafting</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-brain text-green-500 mt-0.5 mr-2"></i>
+<span>Smart send-time optimization</span>
+</li>
+<li class="flex items-start text-xs text-gray-600">
+<i class="fas fa-globe text-green-500 mt-0.5 mr-2"></i>
+<span>Localization for new regions</span>
+</li>
+<li class="flex items-start text-xs text-gray-600 font-bold">
+<i class="fas fa-chart-line text-green-500 mt-0.5 mr-2"></i>
+<span>Scale to 500+ Organizations</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Metrics -->
+<div class="w-full bg-white border-t border-gray-200 py-6 px-16">
+<div class="flex justify-between items-center">
+<div class="flex space-x-12">
+<div>
+<p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Target Active Orgs</p>
+<p class="text-2xl font-bold text-gray-800 font-family-grotesk">500+</p>
+</div>
+<div>
+<p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Messages / Mo</p>
+<p class="text-2xl font-bold text-gray-800 font-family-grotesk">100k</p>
+</div>
+<div>
+<p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">ARR Target</p>
+<p class="text-2xl font-bold text-blue-600 font-family-grotesk">1 L</p>
+</div>
+</div>
+<div class="flex items-center text-sm text-gray-500 italic">
+<i class="fas fa-info-circle mr-2 text-gray-400"></i>
+<span>Roadmap subject to market feedback loops</span>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

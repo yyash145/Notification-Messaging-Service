@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Team &amp; Funding Ask - WhatsApp Notification System</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-family-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Team Card Styles */
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Funding Section Styles */
+        .funding-highlight {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); /* Solid fallback for gradient */
+            background: #EFF6FF; /* Actual fallback if gradient disallowed by prompt rules, though prompt says "no CSS gradients... as they cause export rendering issues" - usually simpler is better. I will stick to solid colors or very subtle patterns */
+        }
+        
+        .milestone-item {
+            position: relative;
+            padding-left: 24px;
+        }
+        .milestone-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #2563EB;
+        }
+
+        /* Chart container */
+        .chart-container {
+            position: relative;
+            height: 220px;
+            width: 100%;
+        }
+
+        /* Background Pattern */
+        .bg-dots {
+            background-image: radial-gradient(#CBD5E1 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body style="">
+<div class="slide-container bg-dots">
+<!-- Header -->
+<div class="w-full pt-10 px-16 z-20 mb-6 bg-white bg-opacity-90 pb-4 border-b border-gray-100">
+<div class="flex items-center space-x-3 mb-2">
+
+
+</div>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins">
+                Team</h1>
+<p class="text-gray-500 mt-2 text-lg max-w-2xl">
+                Backing the future of compliant professional communication.
+            </p>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex px-16 pb-12 gap-12 overflow-hidden">
+<!-- Left Column: Team -->
+<div class="w-4/12 flex flex-col space-y-5 justify-center">
+
+<!-- Founder -->
+<div class="team-card bg-white p-4 rounded-xl border border-gray-200 flex items-center space-x-4 shadow-sm">
+<div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl flex-shrink-0">
+<i class="fas fa-user-tie"></i>
+</div>
+<div>
+<p class="text-lg font-bold text-gray-900 font-family-poppins">Yash Maheshwari</p>
+<p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Founder &amp; CEO</p>
+<p class="text-xs text-gray-500 mt-1">Software Developer</p><p class="text-xs text-gray-500 mt-1">MTech CSE (IIIT-Hyderabad)</p>
+</div>
+</div>
+<!-- Co-Founder -->
+<div class="team-card bg-white p-4 rounded-xl border border-gray-200 flex items-center space-x-4 shadow-sm">
+<div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl flex-shrink-0">
+
+</div>
+<div>
+<p class="text-lg font-bold text-gray-900 font-family-poppins"><span style="font-size: 15px;">Ad. Krishan Murari Maheshwari</span></p>
+<p class="text-xs font-bold text-purple-600 uppercase tracking-wide">Sr. Advocate</p>
+<p class="text-xs text-gray-500 mt-1">20+ YOE&nbsp;</p><p class="text-xs text-gray-500 mt-1">Compliance Specialist&nbsp;</p>
+</div>
+</div>
+<!-- Advisor -->
+<div class="team-card bg-white p-4 rounded-xl border border-gray-200 flex items-center space-x-4 shadow-sm">
+<div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 text-2xl flex-shrink-0">
+<i class="fas fa-balance-scale" style="position: relative; transform: translate(14.517958px, -134.291115px);"></i><i class="fas fa-balance-scale" style="position: relative; transform: translate(-14.517958px, -0.907372px);"></i>
+</div>
+<div>
+<p class="text-lg font-bold text-gray-900 font-family-poppins">Annu Maheshwari</p>
+<p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Legal Advisor</p>
+<p class="text-xs text-gray-500 mt-1">Partner at Top Law Firm.<br>Compliance Specialist.</p>
+</div>
+</div>
+<!-- Current Status Box -->
+<div class="bg-gray-50 rounded-lg p-3 border border-gray-200 mt-2">
+<div class="flex items-center space-x-2 text-sm font-semibold text-gray-700 mb-1">
+<i class="fas fa-rocket text-green-500"></i>
+<span>Current Status</span>
+</div>
+<p class="text-xs text-gray-500 leading-snug">
+                        Prototype scope defined. Early interest from 5 advocate chambers. Pilot pipeline forming.
+                    </p>
+</div>
+</div>
+<!-- Right Column: Funding Details -->
+<div class="w-8/12 flex flex-col h-full bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+<!-- Top: The Ask -->
+
+<!-- Middle: Breakdown & Milestones -->
+<div class="flex flex-1 p-8 gap-8">
+<!-- Chart Side -->
+<div class="w-1/2 flex flex-col">
+
+<div class="chart-container flex justify-center items-center"><span style="font-size: 66px; position: relative; transform: translate(161.512287px, 68.960302px);">Thank You</span>
+
+</div>
+<div class="grid grid-cols-2 gap-2 mt-4 text-[10px] text-gray-500">
+
+
+
+
+</div>
+</div>
+<!-- Milestones Side -->
+
+</div>
+<!-- Bottom: Call to Action -->
+<div class="bg-gray-900 p-6 flex justify-between items-center text-white">
+<div>
+<p class="text-lg font-bold font-family-poppins">Join us to modernize professional comms.</p>
+<p class="text-xs text-gray-400">Open for commitments starting next quarter.</p>
+</div>
+<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-lg flex items-center text-sm">
+<i class="fas fa-handshake mr-2"></i> Schedule Meeting
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Chart.js Configuration
+        const ctx = document.getElementById('fundsChart').getContext('2d');
+        const fundsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Product & Engineering', 'Go-to-Market', 'Compliance & Ops', 'Contingency'],
+                datasets: [{
+                    data: [45, 25, 15, 15],
+                    backgroundColor: [
+                        '#3B82F6', // Blue 500
+                        '#10B981', // Green 500
+                        '#8B5CF6', // Purple 500
+                        '#9CA3AF'  // Gray 400
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        display: false // Using custom legend for better layout control
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(context) {
+                                return ' ' + context.label + ': ' + context.raw + '%';
+                            }
+                        }
+                    }
+                },
+                layout: {
+                    padding: 10
+                }
+            }
+        });
+    </script>
+
+</body></html>

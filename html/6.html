@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Market Opportunity - TAM SAM SOM</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-family-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* TAM SAM SOM Circles */
+        .market-circle {
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .circle-tam {
+            width: 480px;
+            height: 480px;
+            background-color: #F1F5F9; /* Slate 100 */
+            border: 2px solid #E2E8F0;
+            z-index: 10;
+            padding-top: 40px;
+        }
+
+        .circle-sam {
+            width: 320px;
+            height: 320px;
+            background-color: #DBEAFE; /* Blue 100 */
+            border: 2px solid #BFDBFE;
+            z-index: 20;
+            padding-top: 40px;
+        }
+
+        .circle-som {
+            width: 160px;
+            height: 160px;
+            background-color: #DCFCE7; /* Green 100 */
+            border: 2px solid #25D366;
+            z-index: 30;
+            justify-content: center;
+            padding-top: 0;
+        }
+
+        /* Connecting Lines */
+        .connector-line {
+            position: absolute;
+            height: 2px;
+            background-color: #94A3B8;
+            z-index: 5;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left-color: #25D366;
+        }
+
+        /* Background Pattern */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(#F1F5F9 1px, transparent 1px),
+                linear-gradient(90deg, #F1F5F9 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body style="">
+<div class="slide-container bg-grid-pattern">
+<!-- Header -->
+<div class="w-full pt-10 px-16 z-20 mb-4">
+<div class="flex items-center space-x-3 mb-2">
+<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Market Size</span>
+<span class="text-gray-400 text-sm font-medium">Growth Potential</span>
+</div>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins">
+                Market <span class="text-blue-600">Opportunity</span>
+</h1>
+<p class="text-gray-500 mt-2 text-lg max-w-2xl">
+                Targeting the underserved legal technology market with a high-value, low-friction solution.
+            </p>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex px-16 pb-10 relative z-10">
+<!-- Left Panel: TAM/SAM/SOM Visual -->
+<div class="w-7/12 relative flex items-center justify-center">
+<!-- Circles Container -->
+<div class="relative w-[500px] h-[500px]">
+<!-- TAM -->
+<div class="market-circle circle-tam">
+<div class="text-center">
+<p class="text-sm font-bold text-gray-400 uppercase tracking-widest">TAM</p>
+<p class="text-xs text-gray-500 mt-1 font-medium">Global Prof. Services</p>
+</div>
+</div>
+<!-- SAM -->
+<div class="market-circle circle-sam">
+<div class="text-center">
+<p class="text-sm font-bold text-blue-400 uppercase tracking-widest">SAM</p>
+<p class="text-xs text-blue-600 mt-1 font-medium">Regional Legal Tech</p>
+</div>
+</div>
+<!-- SOM -->
+<div class="market-circle circle-som shadow-lg">
+<div class="text-center">
+<h3 class="text-3xl font-bold text-gray-800 font-family-grotesk">1M</h3>
+<p class="text-xs font-bold text-green-600 uppercase tracking-widest mt-1">SOM</p>
+<p class="text-[10px] text-gray-500 mt-1">Year 2 Goal</p>
+</div>
+</div>
+<!-- Callout Lines & Data Cards -->
+<!-- TAM Data -->
+<div class="absolute top-10 right-0 transform translate-x-12 translate-y-4">
+<div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-48">
+<div class="flex justify-between items-baseline mb-1">
+<span class="text-2xl font-bold text-gray-800 font-family-grotesk">$12B</span>
+<span class="text-xs text-gray-400">Total Market</span>
+</div>
+<p class="text-xs text-gray-500 leading-snug">Global appointment reminder software market across all verticals.</p>
+</div>
+<div class="absolute top-6 -left-16 w-16 h-px bg-gray-400"></div>
+<div class="absolute top-6 -left-16 w-2 h-2 rounded-full bg-gray-400 transform -translate-x-1 -translate-y-1/2"></div>
+</div>
+<!-- SAM Data -->
+<div class="absolute top-1/2 right-0 transform translate-x-16 -translate-y-12">
+<div class="bg-white p-3 rounded-lg shadow-sm border border-blue-100 w-48">
+<div class="flex justify-between items-baseline mb-1">
+<span class="text-2xl font-bold text-blue-600 font-family-grotesk">$450M</span>
+<span class="text-xs text-blue-300">Available</span>
+</div>
+<p class="text-xs text-gray-500 leading-snug">Legal professionals in target region actively using WhatsApp for business.</p>
+</div>
+<div class="absolute top-6 -left-28 w-28 h-px bg-blue-300"></div>
+<div class="absolute top-6 -left-28 w-2 h-2 rounded-full bg-blue-300 transform -translate-x-1 -translate-y-1/2"></div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Go-to-Market Strategy -->
+<div class="w-5/12 flex flex-col justify-center pl-8">
+<h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
+<i class="fas fa-rocket text-green-500 mr-3"></i>
+                    Go-to-Market Strategy
+                </h3>
+<div class="space-y-4">
+<!-- Strategy 1 -->
+<div class="bg-white p-4 rounded-xl border-l-4 border-gray-200 card-hover shadow-sm transition-all duration-300">
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 mr-4">
+<i class="fas fa-handshake"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm mb-1">Strategic Partnerships</h4>
+<p class="text-xs text-gray-500 leading-relaxed">
+                                    Collaborate with Bar Associations and Case Management Systems (CMS) for native integrations.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Strategy 2 -->
+<div class="bg-white p-4 rounded-xl border-l-4 border-gray-200 card-hover shadow-sm transition-all duration-300">
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 mr-4">
+<i class="fas fa-user-plus"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm mb-1">Product-Led Growth</h4>
+<p class="text-xs text-gray-500 leading-relaxed">
+                                    "Freemium" tier for solo advocates (up to 50 reminders/month) to drive viral adoption and word-of-mouth.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Strategy 3 -->
+<div class="bg-white p-4 rounded-xl border-l-4 border-gray-200 card-hover shadow-sm transition-all duration-300">
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mr-4">
+<i class="fas fa-search-dollar"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm mb-1">Direct Acquisition</h4>
+<p class="text-xs text-gray-500 leading-relaxed">
+                                    Targeted SEO for "Excel WhatsApp Sender" and "Court Date Reminders" to capture high-intent traffic.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Metric for GTM -->
+<div class="mt-8 bg-gray-50 rounded-lg p-4 flex items-center justify-between border border-gray-200">
+<div>
+<p class="text-xs font-bold text-gray-500 uppercase">Customer Acquisition Cost</p>
+<p class="text-lg font-bold text-gray-800 font-family-grotesk">&lt; 500 Rs&nbsp;<span class="text-xs font-normal text-gray-400">per user</span></p>
+</div>
+<div class="h-8 w-px bg-gray-300 mx-4"></div>
+<div>
+<p class="text-xs font-bold text-gray-500 uppercase">Lifetime Value</p>
+<p class="text-lg font-bold text-green-600 font-family-grotesk">20000+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technical Architecture - WhatsApp Notification System</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 1600px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Diagram Styles */
+        .layer-box {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .layer-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .connector-line {
+            background-color: #CBD5E1;
+            z-index: 0;
+        }
+        
+        /* Dotted background for tech feel */
+        .bg-tech-pattern {
+            background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .pillar-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container bg-tech-pattern">
+<!-- Header -->
+<div class="w-full pt-8 px-16 z-20">
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-1 block">Technical Overview</span>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins">
+                        System <span class="text-blue-600">Architecture</span>
+</h1>
+</div>
+<div class="flex items-center space-x-2 text-sm text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span>Scalable Microservices Design</span>
+</div>
+</div>
+<p class="text-gray-500 max-w-3xl leading-relaxed" style="max-width:55rem">
+                A robust, layered stack designed for high reliability, data security, and seamless integration with WhatsApp APIs.
+            </p>
+</div>
+<!-- Main Diagram Area -->
+<div class="flex-1 flex items-stretch justify-center px-12 py-6 relative z-10">
+<!-- Left Pillar: Security -->
+<div class="w-24 bg-red-50 rounded-2xl border border-red-100 mr-6 flex flex-col items-center py-6 shadow-sm relative group hover:bg-red-100 transition-colors">
+<div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-6 group-hover:bg-white transition-colors">
+<i class="fas fa-shield-alt text-xl"></i>
+</div>
+<div class="flex-1 flex items-center justify-center">
+<h3 class="pillar-text text-red-800 font-bold tracking-widest text-lg uppercase">Security &amp; Compliance</h3>
+</div>
+<div class="mt-6 flex flex-col space-y-4 text-xs text-red-700 font-medium text-center w-full px-2">
+<div class="bg-white py-1 rounded shadow-sm border border-red-100">Auth0 / JWT</div>
+<div class="bg-white py-1 rounded shadow-sm border border-red-100">Encryption</div>
+<div class="bg-white py-1 rounded shadow-sm border border-red-100">Audit Logs</div>
+</div>
+</div>
+<!-- Center Stack -->
+<div class="flex-1 flex flex-col max-w-4xl space-y-6">
+<!-- Layer 1: Presentation -->
+<div class="layer-box border-l-4 border-blue-500 p-4 flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-bold text-gray-800 text-lg flex items-center">
+<i class="fas fa-desktop text-blue-500 mr-2"></i> Presentation Layer
+                        </h3>
+<span class="text-xs font-mono text-gray-400">Next.js / React</span>
+</div>
+<div class="flex space-x-4">
+<div class="flex-1 bg-gray-50 rounded p-3 border border-gray-100 text-center">
+<i class="fas fa-chart-line text-blue-400 mb-2"></i>
+<p class="text-sm font-semibold text-gray-700">Admin Dashboard</p>
+<p class="text-xs text-gray-500 mt-1">Analytics &amp; Config</p>
+</div>
+<div class="flex-1 bg-gray-50 rounded p-3 border border-gray-100 text-center">
+<i class="fas fa-file-excel text-green-600 mb-2"></i>
+<p class="text-sm font-semibold text-gray-700">Upload Interface</p>
+<p class="text-xs text-gray-500 mt-1">Drag &amp; Drop Parser</p>
+</div>
+<div class="flex-1 bg-gray-50 rounded p-3 border border-gray-100 text-center">
+<i class="fas fa-mobile-alt text-gray-400 mb-2"></i>
+<p class="text-sm font-semibold text-gray-700">Client Portal</p>
+<p class="text-xs text-gray-500 mt-1">Opt-in Management</p>
+</div>
+</div>
+</div>
+<!-- Arrow Down -->
+<div class="flex justify-center -my-4 relative z-0">
+<div class="h-8 w-0.5 bg-gray-300"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-full p-1">
+<i class="fas fa-arrow-down text-gray-400 text-xs"></i>
+</div>
+</div>
+<!-- Layer 2: Application -->
+<div class="layer-box border-l-4 border-indigo-500 p-4 flex flex-col bg-indigo-50 bg-opacity-30">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-bold text-gray-800 text-lg flex items-center">
+<i class="fas fa-cogs text-indigo-500 mr-2"></i> Application Layer
+                        </h3>
+<span class="text-xs font-mono text-gray-400">Node.js / Python API</span>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="bg-white rounded p-3 shadow-sm border border-indigo-100">
+<p class="text-xs font-bold text-indigo-700 mb-1">API Gateway</p>
+<p class="text-xs text-gray-500">Rate limiting, Route handling</p>
+</div>
+<div class="bg-white rounded p-3 shadow-sm border border-indigo-100">
+<p class="text-xs font-bold text-indigo-700 mb-1">Scheduler</p>
+<p class="text-xs text-gray-500">Cron jobs, Timezone logic</p>
+</div>
+<div class="bg-white rounded p-3 shadow-sm border border-indigo-100">
+<p class="text-xs font-bold text-indigo-700 mb-1">Validation Engine</p>
+<p class="text-xs text-gray-500">Excel parsing, Data sanitization</p>
+</div>
+<div class="bg-white rounded p-3 shadow-sm border border-indigo-100">
+<p class="text-xs font-bold text-indigo-700 mb-1">Template Mgr</p>
+<p class="text-xs text-gray-500">Variable substitution</p>
+</div>
+</div>
+</div>
+<!-- Arrow Down Split -->
+<div class="flex justify-center -my-4 relative z-0">
+<div class="h-8 w-0.5 bg-gray-300"></div>
+</div>
+<!-- Bottom Row: Messaging & Data -->
+<div class="flex space-x-6">
+<!-- Messaging Layer -->
+<div class="flex-1 layer-box border-l-4 border-green-500 p-4">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-bold text-gray-800 text-md flex items-center">
+<i class="fab fa-whatsapp text-green-500 mr-2"></i> Messaging Layer
+                            </h3>
+</div>
+<div class="space-y-2">
+<div class="flex items-center bg-green-50 p-2 rounded border border-green-100">
+<i class="fas fa-cloud text-green-600 mr-3 text-sm"></i>
+<div>
+<p class="text-sm font-semibold text-gray-800">WhatsApp Business API</p>
+<p class="text-xs text-gray-500">Meta / Twilio BSP</p>
+</div>
+</div>
+<div class="flex items-center bg-gray-50 p-2 rounded border border-gray-100">
+<i class="fas fa-reply text-gray-500 mr-3 text-sm"></i>
+<div>
+<p class="text-sm font-semibold text-gray-800">Webhooks</p>
+<p class="text-xs text-gray-500">Delivery receipts &amp; replies</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Data Layer -->
+<div class="flex-1 layer-box border-l-4 border-gray-600 p-4">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-bold text-gray-800 text-md flex items-center">
+<i class="fas fa-database text-gray-600 mr-2"></i> Data Layer
+                            </h3>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-gray-50 p-2 rounded border border-gray-200 text-center">
+<i class="fas fa-table text-blue-800 mb-1"></i>
+<p class="text-xs font-bold text-gray-700">PostgreSQL</p>
+<p class="text-[10px] text-gray-500">Users, Logs</p>
+</div>
+<div class="bg-gray-50 p-2 rounded border border-gray-200 text-center">
+<i class="fas fa-layer-group text-red-600 mb-1"></i>
+<p class="text-xs font-bold text-gray-700">Redis</p>
+<p class="text-[10px] text-gray-500">Job Queues</p>
+</div>
+<div class="col-span-2 bg-gray-50 p-2 rounded border border-gray-200 flex items-center justify-center space-x-2">
+<i class="fas fa-archive text-yellow-600"></i>
+<div>
+<p class="text-xs font-bold text-gray-700">Object Storage (S3)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pillar: Observability -->
+<div class="w-24 bg-orange-50 rounded-2xl border border-orange-100 ml-6 flex flex-col items-center py-6 shadow-sm relative group hover:bg-orange-100 transition-colors">
+<div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 mb-6 group-hover:bg-white transition-colors">
+<i class="fas fa-eye text-xl"></i>
+</div>
+<div class="flex-1 flex items-center justify-center">
+<h3 class="pillar-text text-orange-800 font-bold tracking-widest text-lg uppercase">Observability</h3>
+</div>
+<div class="mt-6 flex flex-col space-y-4 text-xs text-orange-700 font-medium text-center w-full px-2">
+<div class="bg-white py-1 rounded shadow-sm border border-orange-100">Error Tracking</div>
+<div class="bg-white py-1 rounded shadow-sm border border-orange-100">Performance</div>
+<div class="bg-white py-1 rounded shadow-sm border border-orange-100">System Health</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="w-full bg-gray-50 border-t border-gray-200 py-4 px-16 flex justify-between items-center text-xs text-gray-400">
+<div class="flex items-center space-x-4">
+<span class="flex items-center"><i class="fas fa-lock mr-1"></i> Encryption at Rest</span>
+<span class="flex items-center"><i class="fas fa-network-wired mr-1"></i> TLS 1.3 Transit</span>
+<span class="flex items-center"><i class="fas fa-server mr-1"></i> 99.9% Uptime SLA</span>
+</div>
+</div>
+</div>
+</body>
+</html>

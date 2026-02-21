@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-
+import { ThrottlerModule } from '@nestjs/throttler';
+import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { PermissionsModule } from './modules/permissions/permissions.module';
@@ -12,10 +13,19 @@ import { RetentionModule } from './modules/retention/retention.module';
 import { HealthModule } from './modules/health/health.module';
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { typeOrmConfig } from './database/typeorm.config';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeOrmConfig),
+    ThrottlerModule.forRoot([{
+      ttl: 60000,
+      limit: 5,
+    }]),
+    ConfigModule.forRoot({
+      isGlobal: true,   // makes env available everywhere
+      envFilePath: '/.env',
+    }),
     AuthModule,
     UsersModule,
     PermissionsModule,
@@ -26,6 +36,7 @@ import { typeOrmConfig } from './database/typeorm.config';
     BillingModule,
     RetentionModule,
     HealthModule,
+    PrismaModule
   ],
 })
 export class AppModule {}

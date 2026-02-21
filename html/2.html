@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Problem Statement - WhatsApp Notification System</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .text-brand-dark {
+            color: #0F172A;
+        }
+        .bg-brand-dark {
+            background-color: #0F172A;
+        }
+        /* Custom bullet points line */
+        .pain-point-line {
+            position: absolute;
+            left: 27px;
+            top: 50px;
+            bottom: -20px;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+        .last-item .pain-point-line {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Left Column: Pain Points -->
+<div class="w-7/12 flex flex-col justify-center px-16 py-12 bg-white relative z-10">
+<!-- Header -->
+<div class="mb-10">
+<p class="text-sm font-bold text-red-500 uppercase tracking-wider mb-2">The Problem</p>
+<h1 class="text-4xl font-bold text-gray-900 leading-tight font-family-poppins">
+                Manual Communication is<br/>
+<span class="text-red-500">Costing You Clients &amp; Time</span>
+</h1>
+<p class="mt-4 text-gray-500 text-lg max-w-lg">
+                For advocates and professionals, relying on manual follow-ups creates a broken workflow that doesn't scale.
+            </p>
+</div>
+<!-- Pain Points List -->
+<div class="space-y-8 relative">
+<!-- Item 1 -->
+<div class="relative flex items-start group">
+<div class="pain-point-line group-hover:bg-red-100 transition-colors"></div>
+<div class="relative z-10 flex-shrink-0 w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mr-6 group-hover:bg-red-500 group-hover:text-white transition-all duration-300 shadow-sm">
+<i class="fas fa-phone-slash text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-1">Inefficient Manual Workflow</h3>
+<p class="text-gray-600 leading-relaxed">Staff spends hours manually calling or texting clients from personal devices, leading to fatigue and human error.</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative flex items-start group">
+<div class="pain-point-line group-hover:bg-red-100 transition-colors"></div>
+<div class="relative z-10 flex-shrink-0 w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mr-6 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+<i class="fas fa-calendar-times text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-1">High No-Show Rate</h3>
+<p class="text-gray-600 leading-relaxed">Clients miss court dates simply because they forgot, resulting in adjournments and wasted preparation time.</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative flex items-start group last-item">
+<div class="relative z-10 flex-shrink-0 w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center text-gray-600 mr-6 group-hover:bg-gray-800 group-hover:text-white transition-all duration-300 shadow-sm">
+<i class="fas fa-shield-alt text-2xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-800 mb-1">Compliance &amp; Data Risks</h3>
+<p class="text-gray-600 leading-relaxed">No verifiable audit trail of sent reminders. Client data remains trapped in static Excel sheets, isolated from communication.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Impact Metrics -->
+<div class="w-5/12 bg-gray-900 text-white flex flex-col justify-center px-12 relative overflow-hidden">
+<!-- Background decorative elements -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-red-900 rounded-full mix-blend-screen filter blur-3xl opacity-20 transform -translate-x-1/2 translate-y-1/2"></div>
+<div class="relative z-10">
+<h2 class="text-2xl font-semibold mb-10 border-b border-gray-700 pb-4 inline-block">The Business Impact</h2>
+<!-- Impact 1 -->
+<div class="mb-12">
+<div class="flex items-baseline mb-2">
+<span class="text-6xl font-bold text-red-500 font-family-poppins">20%</span>
+<span class="ml-3 text-red-400 text-xl font-medium"><i class="fas fa-arrow-down"></i> Revenue</span>
+</div>
+<p class="text-gray-300 text-lg leading-snug">
+                    Of potential billable hours are lost annually due to client no-shows and last-minute rescheduling.
+                </p>
+</div>
+<!-- Impact 2 -->
+<div class="mb-12">
+<div class="flex items-baseline mb-2">
+<span class="text-6xl font-bold text-yellow-400 font-family-poppins">10+</span>
+<span class="ml-3 text-yellow-300 text-xl font-medium">Hours/Week</span>
+</div>
+<p class="text-gray-300 text-lg leading-snug">
+                    Wasted by legal teams on administrative phone tag instead of high-value case work.
+                </p>
+</div>
+<!-- Chart Area for "Client Satisfaction" -->
+<div class="bg-gray-800 bg-opacity-50 p-6 rounded-xl border border-gray-700">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-sm text-gray-400 uppercase tracking-wide">Client Satisfaction</p>
+<p class="text-2xl font-bold text-white">Traditional vs Automated</p>
+</div>
+<div class="text-green-400 text-sm font-bold bg-green-900 bg-opacity-30 px-2 py-1 rounded">
+                        +45% Improvement
+                    </div>
+</div>
+<!-- Simple CSS Bar Chart -->
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs text-gray-400 mb-1">
+<span>Traditional Methods</span>
+<span>42%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-2">
+<div class="bg-gray-500 h-2 rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs text-green-400 mb-1">
+<span class="font-semibold">With WhatsApp Automation</span>
+<span class="font-bold">87%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]" style="width: 87%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

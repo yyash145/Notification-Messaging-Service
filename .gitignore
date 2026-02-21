@@ -1,6 +1,13 @@
+.env
 node_modules
+
 backend/node_modules
 backend/dist
-.env
 backend/.env
 backend/src/config
+backend/prisma/src
+backend/src/prisma
+backend/.gitignore
+
+
+package-lock.json

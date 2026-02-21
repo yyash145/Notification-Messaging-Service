@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Competitive Landscape - WhatsApp Notification System</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Grid Background for Chart */
+        .chart-bg {
+            background-image: 
+                linear-gradient(rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Bubble Styles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .bubble:hover {
+            transform: scale(1.05);
+            z-index: 20;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+        }
+
+        .bubble-our {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border: 3px solid #25D366;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.2);
+        }
+
+        .bubble-comp {
+            width: 110px;
+            height: 110px;
+            background: white;
+            border: 2px solid #E2E8F0;
+            color: #64748B;
+        }
+
+        /* Axis Labels */
+        .axis-label {
+            position: absolute;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            background: rgba(255,255,255,0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Feature List Item */
+        .feature-item {
+            transition: transform 0.2s ease;
+        }
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+
+        /* Pulsing effect for our solution */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .pulse-animation {
+            animation: pulse-ring 2s infinite;
+        }
+    </style>
+</head>
+<body style="">
+<div class="slide-container">
+<!-- Header -->
+<div class="w-full pt-10 px-16 z-20">
+<div class="flex items-center space-x-3 mb-2">
+<span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Competitive Landscape</span>
+<span class="text-gray-400 text-sm font-medium">Why We Win</span>
+</div>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins">
+                The <span class="text-purple-600">Smart Choice</span> for Professionals
+            </h1>
+<p class="text-gray-500 mt-2 text-lg max-w-2xl">
+                Bridging the gap between complex custom software and generic broadcast tools.
+            </p>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex px-16 py-8">
+<!-- Left: 2x2 Matrix Chart -->
+<div class="w-7/12 relative bg-gray-50 rounded-2xl border border-gray-200 chart-bg overflow-hidden" style="transform: translate(0px, -17.603912px);">
+<!-- Axes Lines -->
+<div class="absolute left-1/2 top-8 bottom-8 w-0.5 bg-gray-300 transform -translate-x-1/2"></div>
+<div class="absolute top-1/2 left-8 right-8 h-0.5 bg-gray-300 transform -translate-y-1/2"></div>
+<!-- Axis Arrows -->
+<div class="absolute top-6 left-1/2 transform -translate-x-1/2 -rotate-90 text-gray-400"><i class="fas fa-play text-xs"></i></div> <!-- Top -->
+<div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 rotate-90 text-gray-400"><i class="fas fa-play text-xs"></i></div> <!-- Bottom -->
+<div class="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400"><i class="fas fa-play text-xs"></i></div> <!-- Right -->
+<div class="absolute left-6 top-1/2 transform -translate-y-1/2 rotate-180 text-gray-400"><i class="fas fa-play text-xs"></i></div> <!-- Left -->
+<!-- Axis Labels -->
+<div class="axis-label top-8 left-1/2 transform -translate-x-1/2">Automated &amp; Seamless</div>
+<div class="axis-label bottom-8 left-1/2 transform -translate-x-1/2">Manual &amp; High Friction</div>
+<div class="axis-label top-1/2 right-8 transform -translate-y-1/2 translate-x-1/2 rotate-90 origin-bottom-left">Specialized &amp; Compliant</div>
+<div class="axis-label top-1/2 left-4 transform -translate-y-1/2 -rotate-90 origin-bottom-right">Generic &amp; Unsecured</div>
+<!-- Competitor Bubbles -->
+<!-- Quadrant 1: Top Right (Winner) -->
+<div class="bubble bubble-our top-[20%] right-[20%] pulse-animation flex flex-col items-center justify-center" style="transform: translate(950.611247px, 185.427873px);">
+<img alt="Logo" class="w-10 h-10 mb-2 rounded shadow-sm" src="https://page.gensparksite.com/slides_images/e9ff084fa00b03d6c0eed01a7bbe9018.svg" data-height-listener-added="true">
+<span class="font-bold text-gray-800 text-sm">Our Solution</span>
+<span class="text-[10px] text-green-600 font-semibold">Excel + API</span>
+</div>
+<!-- Quadrant 2: Top Left (Generic/Auto) -->
+<div class="bubble bubble-comp top-[25%] left-[20%]" style="transform: translate(225.330074px, 137.310513px);">
+<i class="fas fa-bullhorn text-2xl text-red-400 mb-2"></i>
+<span class="font-bold text-gray-600 text-xs">Generic<br>Broadcast Tools</span>
+</div>
+<!-- Quadrant 3: Bottom Left (Generic/Manual) -->
+<div class="bubble bubble-comp bottom-[20%] left-[20%]" style="transform: translate(113.838631px, 136.136919px);">
+<i class="fas fa-envelope text-2xl text-blue-400 mb-2"></i>
+<span class="font-bold text-gray-600 text-xs">Email / SMS<br>Tools</span>
+</div>
+<!-- Quadrant 4: Bottom Right (Specialized/Manual) -->
+<div class="bubble bubble-comp bottom-[25%] right-[20%]" style="transform: translate(2.347188px, 137.310513px);">
+<i class="fas fa-code text-2xl text-gray-500 mb-2"></i>
+<span class="font-bold text-gray-600 text-xs">Custom<br>Agency Dev</span>
+</div>
+<!-- Contextual Labels for Quadrants -->
+<div class="absolute top-4 right-4 text-xs text-green-700 font-semibold bg-green-50 px-2 py-1 rounded">The Sweet Spot</div>
+<div class="absolute bottom-4 left-4 text-xs text-gray-400">Legacy / Low Engagement</div>
+</div>
+<!-- Right: Differentiators List -->
+<div class="w-5/12 pl-12 flex flex-col justify-center space-y-6" style="position: relative; transform: translate(-1.173594px, -26.992665px);">
+<h3 class="text-xl font-bold text-gray-900 font-family-poppins mb-2">Our Competitive Edge</h3>
+<!-- Advantage 1 -->
+<div class="feature-item flex items-start p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-200">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-4 flex-shrink-0">
+<i class="fas fa-file-excel"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm">Excel-First Onboarding</h4>
+<p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                            Unlike custom apps requiring data migration, we work with the spreadsheets advocates already use.
+                        </p>
+</div>
+</div>
+<!-- Advantage 2 -->
+<div class="feature-item flex items-start p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-purple-200">
+<div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-4 flex-shrink-0">
+<i class="fas fa-balance-scale"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm">Legal-Grade Compliance</h4>
+<p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                            Built-in consent management and audit trails that generic broadcast tools completely lack.
+                        </p>
+</div>
+</div>
+<!-- Advantage 3 -->
+<div class="feature-item flex items-start p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
+<i class="fab fa-whatsapp"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm">Native WhatsApp API</h4>
+<p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                            Official Green Tick potential and high deliverability, avoiding the "Spam" folder risks of grey-hat tools.
+                        </p>
+</div>
+</div>
+<!-- Advantage 4 -->
+<div class="feature-item flex items-start p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200">
+<div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mr-4 flex-shrink-0">
+<i class="fas fa-bolt"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 text-sm">Rapid Time-to-Value</h4>
+<p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                            Deploy in minutes, not months. No expensive agency build fees or long development cycles.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="w-full bg-white border-t border-gray-100 py-4 px-16 flex justify-between items-center text-xs text-gray-400">
+<div class="flex items-center">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
+<span>Positioned for High Growth</span>
+</div>
+<div>
+                Source: Internal Market Analysis 2026
+            </div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advocate Reminder Workflow</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-family-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Timeline styling */
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background-color: #E5E7EB;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+        
+        /* Step styling */
+        .step-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 4px solid #E5E7EB;
+            position: relative;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .step-container:hover .step-circle {
+            transform: scale(1.1);
+            border-color: #25D366;
+            box-shadow: 0 0 0 8px rgba(37, 211, 102, 0.1);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 24px;
+            height: 24px;
+            background-color: #374151;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 20;
+        }
+        
+        .step-container:hover .step-number {
+            background-color: #25D366;
+        }
+
+        /* Connecting active line */
+        .active-line-segment {
+            height: 4px;
+            background-color: #25D366;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+        
+        /* Card styling */
+        .step-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #F3F4F6;
+            transition: all 0.3s ease;
+            width: 200px;
+        }
+        
+        .step-container:hover .step-card {
+            border-color: #25D366;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.15);
+        }
+
+        /* Alternating layout helper */
+        .card-top {
+            margin-bottom: 24px;
+        }
+        .card-bottom {
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header -->
+<div class="w-full pt-12 px-16 z-10">
+<div class="flex items-center space-x-3 mb-2">
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Use Case</span>
+<span class="text-gray-400 text-sm font-medium">For Legal Professionals</span>
+</div>
+<h1 class="text-4xl font-bold text-gray-900 font-family-poppins">
+            Advocate Reminder <span class="text-green-600">Workflow</span>
+</h1>
+<p class="text-gray-500 mt-2 text-lg">A seamless path from case file to client confirmation.</p>
+</div>
+<!-- Main Workflow Area -->
+<div class="flex-1 relative flex items-center justify-center w-full px-8">
+<!-- Static connection line -->
+<div class="timeline-line"></div>
+<!-- Steps Wrapper -->
+<div class="flex justify-between w-full max-w-6xl relative z-10 px-8">
+<!-- Step 1: Top Aligned -->
+<div class="step-container flex flex-col items-center group">
+<div class="step-card card-top text-center">
+<h3 class="font-bold text-gray-800 mb-2">Prepare Excel</h3>
+<p class="text-xs text-gray-500 leading-relaxed">
+                        Input client name, number, hearing date, and time into the template.
+                    </p>
+</div>
+<div class="step-circle bg-white group-hover:bg-green-50">
+<div class="step-number">1</div>
+<i class="fas fa-file-excel text-2xl text-green-700"></i>
+</div>
+<div class="h-24 w-1 border-l-2 border-dashed border-gray-300 card-bottom opacity-0"></div> <!-- Spacer -->
+</div>
+<!-- Step 2: Bottom Aligned -->
+<div class="step-container flex flex-col items-center group">
+<div class="h-24 w-1 border-l-2 border-dashed border-gray-300 card-top opacity-0"></div> <!-- Spacer -->
+<div class="step-circle bg-white group-hover:bg-blue-50">
+<div class="step-number">2</div>
+<i class="fas fa-cloud-upload-alt text-2xl text-blue-600"></i>
+</div>
+<div class="step-card card-bottom text-center">
+<h3 class="font-bold text-gray-800 mb-2">Upload &amp; Validate</h3>
+<p class="text-xs text-gray-500 leading-relaxed">
+                        System checks format, duplicates, and valid numbers automatically.
+                    </p>
+</div>
+</div>
+<!-- Step 3: Top Aligned -->
+<div class="step-container flex flex-col items-center group">
+<div class="step-card card-top text-center">
+<h3 class="font-bold text-gray-800 mb-2">Schedule</h3>
+<p class="text-xs text-gray-500 leading-relaxed">
+                        Set reminder triggers (e.g., T-24h before hearing). Auto timezone handling.
+                    </p>
+</div>
+<div class="step-circle bg-white group-hover:bg-purple-50">
+<div class="step-number">3</div>
+<i class="fas fa-clock text-2xl text-purple-600"></i>
+</div>
+<div class="h-24 w-1 border-l-2 border-dashed border-gray-300 card-bottom opacity-0"></div> <!-- Spacer -->
+</div>
+<!-- Step 4: Bottom Aligned -->
+<div class="step-container flex flex-col items-center group">
+<div class="h-24 w-1 border-l-2 border-dashed border-gray-300 card-top opacity-0"></div> <!-- Spacer -->
+<div class="step-circle bg-white group-hover:bg-yellow-50">
+<div class="step-number">4</div>
+<i class="fab fa-whatsapp text-2xl text-yellow-600"></i>
+</div>
+<div class="step-card card-bottom text-center">
+<h3 class="font-bold text-gray-800 mb-2">Send &amp; Track</h3>
+<p class="text-xs text-gray-500 leading-relaxed">
+                        Messages sent via API. Delivery receipts logged in dashboard.
+                    </p>
+</div>
+</div>
+<!-- Step 5: Top Aligned -->
+<div class="step-container flex flex-col items-center group">
+<div class="step-card card-top text-center">
+<h3 class="font-bold text-gray-800 mb-2">Confirm &amp; Escalate</h3>
+<p class="text-xs text-gray-500 leading-relaxed">
+                        Clients reply to confirm. Non-replies trigger a follow-up alert.
+                    </p>
+</div>
+<div class="step-circle bg-white group-hover:bg-red-50">
+<div class="step-number">5</div>
+<i class="fas fa-check-double text-2xl text-red-500"></i>
+</div>
+<div class="h-24 w-1 border-l-2 border-dashed border-gray-300 card-bottom opacity-0"></div> <!-- Spacer -->
+</div>
+</div>
+</div>
+<!-- Legend/Footer -->
+<div class="w-full bg-gray-50 py-6 px-16 border-t border-gray-200">
+<div class="flex justify-between items-center">
+<div class="flex space-x-8">
+<div class="flex items-center text-sm text-gray-600">
+<span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span>
+<span>Advocate Action</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
+<span>System Action</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<span class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></span>
+<span>Client Interaction</span>
+</div>
+</div>
+<div class="flex items-center text-gray-400 text-sm">
+<i class="fas fa-info-circle mr-2"></i>
+<span>Full audit trail maintained for legal compliance</span>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

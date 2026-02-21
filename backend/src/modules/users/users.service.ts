@@ -12,21 +12,16 @@ export class UsersService {
     private repo: Repository<User>,
   ) {}
 
-  // async findByEmail(email: string): Promise<User | undefined> {
-  //   return this.users.find(u => u.email === email);
-  // }
-
-  // async create(user: User): Promise<User> {
-  //   this.users.push(user);
-  //   return user;
-  // }
-
   findByEmail(email: string) {
     return this.repo.findOne({ where: { email } });
   }
 
   findById(id: string) {
     return this.repo.findOne({ where: { id } });
+  }
+
+  async findAll() {
+    return this.repo.find();
   }
 
   create(user: Partial<User>) {
