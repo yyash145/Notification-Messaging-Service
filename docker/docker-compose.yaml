@@ -6,6 +6,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password1234
-      POSTGRES_DB: mydb
+      POSTGRES_DB: notification
     ports:
       - "5432:5432"

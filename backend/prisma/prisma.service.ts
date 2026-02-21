@@ -8,21 +8,15 @@ export class PrismaService
   extends PrismaClient
   implements OnModuleInit, OnModuleDestroy {
 
-//   constructor() {
-//     super({
-//         accelerateUrl: "prisma+postgresql://postgres:password1234@localhost:5432/dbname"
-//     });
-//   }
-    constructor() {
-        const pool = new Pool({
-        connectionString: process.env.DATABASE_URL,
-        });
+  constructor() {
+    const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+    });
 
-        const adapter = new PrismaPg(pool);
-
-        super({
-            adapter,
-        });
+    const adapter = new PrismaPg(pool);
+    super({
+      adapter,
+    });
   }
 
   async onModuleInit() {

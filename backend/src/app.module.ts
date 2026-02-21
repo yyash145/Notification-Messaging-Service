@@ -24,7 +24,6 @@ import { PrismaModule } from '../prisma/prisma.module';
     }]),
     ConfigModule.forRoot({
       isGlobal: true,   // makes env available everywhere
-      envFilePath: '/.env',
     }),
     AuthModule,
     UsersModule,
