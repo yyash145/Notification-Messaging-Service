@@ -4,20 +4,19 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { AuthService } from '../auth.service';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
-  constructor(private authService: AuthService) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
+  constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'SUPER_SECRET_KEY', // move to env later
+      secretOrKey: 'SUPER_SECRET_KEY',
     });
   }
 
   async validate(payload: any) {
-    const user = await this.authService.validateRefreshToken(
-      payload.sub,
-      payload.refreshToken,
-    );
-    if (!user) throw new UnauthorizedException();
-    return user;
+    return {
+      userId: payload.sub,
+      email: payload.email,
+      role: payload.role,
+    };
   }
 }

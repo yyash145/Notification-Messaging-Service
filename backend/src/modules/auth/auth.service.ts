@@ -3,6 +3,8 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/database/entities/user.entity';
+import { Role } from '@prisma/client';
+import { BadRequestException } from '@nestjs/common';
 
 @Injectable()
 export class AuthService {
@@ -11,10 +13,11 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
+
   async signup(email: string, password: string) {
     const existing = await this.usersService.findByEmail(email);
     if (existing) {
-      throw new UnauthorizedException('User already exists');
+      throw new BadRequestException('User already exists');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -23,6 +26,7 @@ export class AuthService {
       id: crypto.randomUUID(),
       email,
       password: hashedPassword,
+      role: Role.USER,
       isActive: true,
     });
 
@@ -79,5 +83,5 @@ export class AuthService {
     if (!user) throw new UnauthorizedException();
 
     return this.generateAccessToken(user);
-  }
+  }  
 }

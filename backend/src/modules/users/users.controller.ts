@@ -1,8 +1,10 @@
-import { Controller, Get, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, Req, Body, Delete, Query, ParseUUIDPipe } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decortor';
 import { UsersService } from './users.service';
+import { Role } from '@prisma/client';
+import { AdminCreateUserDto } from './dto/adminCreateUser.dto';
 
 @Controller('users')
 export class UsersController {
@@ -17,7 +19,21 @@ export class UsersController {
     };
   }
 
-  @Roles('superadmin')
+  @Roles(Role.SUPER_ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Post('setUserRole')
+  setUserRole(@Body() dto: AdminCreateUserDto) {
+    return this.usersService.setUserRoleByAdmin(dto);
+  }
+
+  @Roles(Role.SUPER_ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Delete('removeUser')
+  async deleteUser(@Query('id', new ParseUUIDPipe()) id: string,) {
+    return this.usersService.delete(id);
+  }
+
+  @Roles(Role.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get('getAllUsers')
   async getAllUsers() {
@@ -29,8 +45,8 @@ export class UsersController {
     };
   }
 
-  // 🔒 Admin-only route
-  @Roles('admin')
+  // Admin-only route
+  @Roles(Role.ADMIN, Role.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get('admin-only')
   getAdminData() {
