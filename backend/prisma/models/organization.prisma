@@ -1,0 +1,13 @@
+// Organization (tenant) → Users → Clients → Subscription → MessageLog
+// Schema for Organization (Tenant)
+
+model Organization {
+  id          String   @id @default(uuid())
+  name        String
+  createdAt   DateTime @default(now())
+
+  users       User[]
+  clients     Client[]
+  subscription Subscription?
+  messageLogs MessageLog[]
+}

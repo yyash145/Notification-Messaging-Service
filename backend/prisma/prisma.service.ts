@@ -21,7 +21,6 @@ export class PrismaService
 
   async onModuleInit() {
     await this.$connect();
-    console.log('ENV VALUE:', process.env.DATABASE_URL);
   }
 
   async onModuleDestroy() {

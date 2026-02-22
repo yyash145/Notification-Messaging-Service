@@ -6,46 +6,4 @@
 
 // run "npx prisma generate" after every prisma schema change
 
-generator client {
-  provider = "prisma-client"
-  output   = "../src/prisma"
-}
-
-datasource db {
-  provider = "postgresql"
-}
-
-model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
-  password     String
-  role         Role     @default(USER)
-  refreshToken String?
-  createdAt    DateTime @default(now())
-
-  clients      Client[]
-}
-
-model Client {
-  id        Int      @id @default(autoincrement())
-  userId    String
-  name      String
-  phone     String
-  eventDate DateTime
-  createdAt DateTime @default(now())
-
-  user      User     @relation(fields: [userId], references: [id])
-}
-
-model ExcelUpload {
-  id        Int      @id @default(autoincrement())
-  userId    String
-  lastRow   Int
-  updatedAt DateTime @updatedAt
-}
-
-enum Role {
-  SUPER_ADMIN
-  ADMIN
-  USER
-}
+// All the models has been modularized

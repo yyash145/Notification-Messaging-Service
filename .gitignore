@@ -1,13 +1,14 @@
 .env
-node_modules
 html
+node_modules
+package-lock.json
 
 backend/node_modules
 backend/dist
 backend/.env
 backend/src/config
-backend/prisma/src
-backend/src/prisma
+backend/prisma/generate
+backend/test
+backend/package-lock.json
 
 
-package-lock.json

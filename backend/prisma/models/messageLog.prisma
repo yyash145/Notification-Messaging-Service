@@ -1,0 +1,16 @@
+model MessageLog {
+  id              String   @id @default(uuid())
+  organizationId  String
+  clientId        String
+  phone           String
+  message         String
+  status          MessageStatus
+  providerMessageId String?
+  sentAt          DateTime @default(now())
+
+  organization    Organization @relation(fields: [organizationId], references: [id])
+  client          Client       @relation(fields: [clientId], references: [id])
+
+  @@index([organizationId])
+  @@index([sentAt])
+}

@@ -6,7 +6,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   port: 5432,
   username: 'postgres',
   password: 'password1234',
-  database: 'notification',
+  database: 'notification_service',
   autoLoadEntities: true,
   synchronize: true, // DEV ONLY
 };

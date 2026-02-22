@@ -21,24 +21,12 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   login(@Req() req) {
-    // req.user comes from LocalStrategy
     return this.authService.login(req.user);
   }
 
-  // @Post('refresh')
-  // async refresh(@Body() dto) {
-  //   const user = await this.usersService.findById(dto.userId);
-  //   if (!user || !user.refreshToken) throw new UnauthorizedException();
-    
-  //   const valid = await bcrypt.compare(dto.refreshToken, user.refreshToken);
-  //   if (!valid) throw new UnauthorizedException();
-
-  //   return this.generateAccessToken(user);
-  // }
-
   @UseGuards(AuthGuard('jwt-refresh'))
   @Post('refresh')
-  refresh(@Req() req) {
-    return this.authService.login(req.user);
+  async refresh(@Body() dto) {
+    return this.authService.refresh(dto.userId, dto.refreshToken);
   }
 }

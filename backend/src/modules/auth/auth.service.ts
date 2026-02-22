@@ -26,28 +26,15 @@ export class AuthService {
       isActive: true,
     });
 
-    return this.generateToken(user.id, user.email);
+    return this.generateAccessToken(user);
   }
 
-  // async login(email: string, password: string) {
-  //   const user = await this.usersService.findByEmail(email);
-  //   if (!user) {
-  //     throw new UnauthorizedException('Invalid credentials');
-  //   }
-
-  //   const valid = await bcrypt.compare(password, user.password);
-  //   if (!valid) {
-  //     throw new UnauthorizedException('Invalid credentials');
-  //   }
-
-  //   return this.generateToken(user.id, user.email);
-  // }
-
   async login(user: User) {
-    const accessToken = this.jwtService.sign({ sub: user.id });
-    const refreshToken = crypto.randomUUID();
+    const accessToken = this.generateAccessToken(user).accessToken;
 
+    const refreshToken = crypto.randomUUID();
     user.refreshToken = await bcrypt.hash(refreshToken, 10);
+
     await this.usersService.save(user);
 
     return { accessToken, refreshToken };
@@ -60,6 +47,8 @@ export class AuthService {
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) throw new UnauthorizedException();
 
+    if (!user.isActive) throw new UnauthorizedException('Account disabled');
+
     return user;
   }
 
@@ -71,12 +60,24 @@ export class AuthService {
     return isValid ? user : null;
   }
 
-  private generateToken(userId: string, email: string) {
+  private generateAccessToken(user: User) {
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
     return {
-      accessToken: this.jwtService.sign({
-        sub: userId,
-        email,
+      accessToken: this.jwtService.sign(payload, {
+        expiresIn: '15m',
       }),
     };
+  }
+
+  async refresh(userId: string, refreshToken: string) {
+    const user = await this.validateRefreshToken(userId, refreshToken);
+    if (!user) throw new UnauthorizedException();
+
+    return this.generateAccessToken(user);
   }
 }
