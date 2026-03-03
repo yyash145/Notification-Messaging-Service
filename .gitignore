@@ -1,14 +1,19 @@
 .env
 html
+html/*
+*.html
 node_modules
 package-lock.json
 
 backend/node_modules
 backend/dist
 backend/.env
-backend/src/config
 backend/prisma/generate
 backend/test
 backend/package-lock.json
+
+.DS_Store
+backend/.DS_Store
+frontend/.DS_Store
 
 
