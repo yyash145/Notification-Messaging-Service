@@ -14,6 +14,7 @@ import { HealthModule } from './modules/health/health.module';
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { typeOrmConfig } from './database/typeorm.config';
 import { PrismaModule } from '../prisma/prisma.module';
+import { TemplateModule } from './modules/template/template.module';
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import { PrismaModule } from '../prisma/prisma.module';
     BillingModule,
     RetentionModule,
     HealthModule,
-    PrismaModule
+    PrismaModule,
+    TemplateModule
   ],
 })
 export class AppModule {}

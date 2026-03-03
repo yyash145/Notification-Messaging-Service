@@ -16,3 +16,8 @@ enum MessageStatus {
   FAILED
   PENDING
 }
+
+enum TemplateCategory {
+  GLOBAL
+  USER
+}
