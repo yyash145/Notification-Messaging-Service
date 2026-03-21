@@ -9,8 +9,7 @@ export class WhatsAppQueue {
   constructor(private readonly redisService: RedisService) {
     this.queue = new Queue('whatsapp', {
       connection: {
-        //this.redisService.getClient(),
-        host: 'localhost',
+        host: process.env.REDIS_HOST || 'localhost',
         port: 6379,
       }
     });

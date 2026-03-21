@@ -1,0 +1,10 @@
+model Message {
+  id        String   @id @default(uuid())
+  phone     String
+  content   String
+  status    MessageStatus
+  jobId     String   @unique
+  error     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

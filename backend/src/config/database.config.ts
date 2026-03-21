@@ -1,3 +1,3 @@
 // PostgreSQL database configuration using TypeORM
-
-export const DATABASE_URL="postgresql://postgres:postgres@localhost:5432/notification"
+const host = process.env.DB_HOST || 'localhost'
+export const DATABASE_URL=`postgresql://postgres:postgres@${host}:5432/notification`

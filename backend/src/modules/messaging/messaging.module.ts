@@ -1,8 +1,11 @@
 // messaging.module.ts
 import { Module } from '@nestjs/common';
+import { WhatsappQueueService } from './whatsapp-queue.service';
+import { MessagingController } from './messaging.controller';
 
 @Module({
-  providers: [],
-  exports: [],
+  controllers: [MessagingController],
+  providers: [WhatsappQueueService],
+  exports: [WhatsappQueueService],
 })
 export class MessagingModule {}
