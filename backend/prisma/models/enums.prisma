@@ -11,10 +11,16 @@ enum PlanType {
   ENTERPRISE
 }
 
-enum MessageStatus {
+enum MessageLogStatus {
   SENT
   FAILED
   PENDING
+}
+
+enum MessageStatus {
+  QUEUED
+  SENT
+  FAILED
 }
 
 enum TemplateCategory {
