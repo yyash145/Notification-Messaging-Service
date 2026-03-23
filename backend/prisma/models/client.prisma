@@ -1,18 +1,15 @@
-// Organization based Clients
 model Client {
-  id             String   @id @default(uuid())
+  id             String       @id @default(uuid())
   organizationId String
   name           String
-  role           Role     @default(CLIENT)
+  role           Role         @default(CLIENT)
   phone          String
   eventDate      DateTime
-  createdAt      DateTime @default(now())
-
+  createdAt      DateTime     @default(now())
   organization   Organization @relation(fields: [organizationId], references: [id])
   messageLogs    MessageLog[]
 
+  @@unique([organizationId, phone, eventDate])
   @@index([organizationId])
   @@index([eventDate])
-
-  @@unique([organizationId, phone, eventDate])
 }

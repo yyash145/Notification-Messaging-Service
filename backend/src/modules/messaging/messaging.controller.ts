@@ -1,12 +1,12 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { WhatsappQueueService } from './whatsapp-queue.service';
+import { WhatsappProducerService } from './whatsapp-producer.service';
 
-@Controller('messages')
+@Controller('messaging')
 export class MessagingController {
-  constructor(private readonly queueService: WhatsappQueueService) {}
+  constructor(private readonly producer: WhatsappProducerService) {}
 
   @Post('send')
-  async sendMessage(
+  async sendWhatsapp(
     @Body()
     body: {
       phone: string;
@@ -15,11 +15,11 @@ export class MessagingController {
       priority?: number;
     },
   ) {
-    await this.queueService.sendMessage(body);
-
-    return {
-      status: 'queued',
-      ...body,
-    };
+    return this.producer.sendMessage(
+      body.phone,
+      body.message,
+      body.delay,
+      body.priority,
+    );
   }
 }

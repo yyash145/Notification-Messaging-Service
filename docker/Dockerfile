@@ -14,4 +14,4 @@ COPY backend .
 RUN npx prisma generate
 RUN npm run build
 
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]
