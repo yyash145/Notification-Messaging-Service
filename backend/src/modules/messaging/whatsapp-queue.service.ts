@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Queue } from 'bullmq';
+import { PrismaService } from 'prisma/prisma.service';
 
 @Injectable()
 export class WhatsappQueueService {
   private queue: Queue;
-  prisma: any;
 
-  constructor() {
+  constructor(private readonly prisma: PrismaService) {
     this.queue = new Queue('whatsapp', {
       connection: {
         host: process.env.REDIS_HOST || 'localhost',
@@ -18,12 +18,14 @@ export class WhatsappQueueService {
   async sendMessage(options: {
     phone: string;
     message: string;
-    delay?: number;     // in ms
-    priority?: number;  // lower = higher priority
+    delay?: number;
+    priority?: number;
   }) {
     const { phone, message, delay = 0, priority = 5 } = options;
-    const jobId = `${phone}-${message}-${Math.floor(Date.now() / 60000)}`;
 
+    const jobId = `${phone}-${Date.now()}`;
+
+    // ✅ Save in DB
     await this.prisma.message.create({
       data: {
         jobId,
@@ -33,23 +35,24 @@ export class WhatsappQueueService {
       },
     });
 
+    // ✅ Add to queue
     await this.queue.add(
       'send-message',
-      { phone, message },
+      { phone, message, jobId },
       {
         jobId,
-        attempts: 3, // 🔁 Retry 3 times
+        attempts: 3,
         backoff: {
           type: 'exponential',
-          delay: 5000, // 5 sec → 10 → 20...
+          delay: 5000,
         },
-        delay,         // ⏱️ Delay support
-        priority,      // 🔥 Priority support
+        delay,
+        priority,
         removeOnComplete: true,
         removeOnFail: false,
       },
     );
 
-    console.log('📩 Job queued:', { phone, delay, priority });
+    return { jobId, status: 'queued' };
   }
 }

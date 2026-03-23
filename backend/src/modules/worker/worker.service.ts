@@ -1,11 +1,12 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Worker } from 'bullmq';
 import axios from 'axios';
+import { PrismaService } from 'prisma/prisma.service';
 
 
 @Injectable()
 export class WhatsappWorkerService implements OnModuleInit {
-  prisma: any;
+  constructor(private readonly prisma: PrismaService) {}
   onModuleInit() {
     console.log('Worker starting...');
 
@@ -14,7 +15,7 @@ export class WhatsappWorkerService implements OnModuleInit {
       async job => {
         const { phone, message, jobId } = job.data;
 
-        console.log('Sending message to:', phone);
+        console.log('Sending', message, 'to:', phone, 'from', jobId);
 
         try {
           await axios.post(
@@ -38,7 +39,7 @@ export class WhatsappWorkerService implements OnModuleInit {
           });
 
         } catch (error) {
-          console.error('❌ Send failed:', error.message);
+          console.error('❌ Send error:', error.response?.data || error.message);
 
           await this.prisma.message.update({
             where: { jobId },
@@ -56,7 +57,7 @@ export class WhatsappWorkerService implements OnModuleInit {
           host: process.env.REDIS_HOST || 'localhost',
           port: 6379,
         },
-        limiter: {    // Rate Limiter
+        limiter: {
           max: 10,
           duration: 1000,
         },

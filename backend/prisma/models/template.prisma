@@ -1,14 +1,12 @@
 model template {
-  id                    String   @id @default(uuid())
-  displayName           String
-  whatsappTemplateName  String   // exact name approved in Meta
-  category              TemplateCategory
-  variables             Json?
-  isActive              Boolean  @default(true)
-
-  createdByUserId       String?
-  createdByUser         User?    @relation(fields: [createdByUserId], references: [id])
-
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
+  id                   String           @id @default(uuid())
+  displayName          String
+  whatsappTemplateName String
+  category             TemplateCategory
+  variables            Json?
+  isActive             Boolean          @default(true)
+  createdByUserId      String?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+  createdByUser        User?            @relation(fields: [createdByUserId], references: [id])
 }
