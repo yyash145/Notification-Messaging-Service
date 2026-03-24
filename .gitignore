@@ -1,7 +1,7 @@
 .env
 html
 html/*
-*.html
+#*.html
 node_modules
 package-lock.json
 
