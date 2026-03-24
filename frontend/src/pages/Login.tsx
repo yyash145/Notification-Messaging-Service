@@ -6,7 +6,7 @@ type Props = {
   onLogin: () => void;
 };
 
-const Login: React.FC<Props> = ({ onSwitch }) => {
+const Login: React.FC<Props> = ({ onSwitch, onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,17 +16,13 @@ const Login: React.FC<Props> = ({ onSwitch }) => {
     try {
       const data = await loginUser(email, password);
 
-      // 🔐 Store JWT
       localStorage.setItem("token", data.access_token);
 
-      alert("Login successful 🚀");
-
-      // TODO: redirect to dashboard
-    } catch (err) {
-      alert("Invalid credentials ❌");
+      onLogin(); 
+    } catch {
+      alert("Invalid credentials");
     }
   };
-
   return (
     <>
       <h2>Login</h2>
