@@ -74,4 +74,8 @@ export class UsersService {
       };
     }
   }
+
+  async removeAllUsers() {
+    return this.repo.deleteAll();
+  }
 }

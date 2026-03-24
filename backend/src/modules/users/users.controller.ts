@@ -35,6 +35,13 @@ export class UsersController {
 
   @Roles(Role.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
+  @Delete('removeAllUsers')
+  async removeAllUsers() {
+    return this.usersService.removeAllUsers();
+  }
+
+  @Roles(Role.SUPER_ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get('getAllUsers')
   async getAllUsers() {
     const users = await this.usersService.findAll();
