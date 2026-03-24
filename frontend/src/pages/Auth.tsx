@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -9,6 +10,12 @@ type Props = {
 
 const Auth: React.FC<Props> = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
+
+  const handleLoginSuccess = () => {
+    onLogin();
+    navigate("/home");
+  };
 
   return (
     <div className="auth-container">
@@ -16,7 +23,7 @@ const Auth: React.FC<Props> = ({ onLogin }) => {
         {isLogin ? (
           <Login
             onSwitch={() => setIsLogin(false)}
-            onLogin={onLogin}
+            onLogin={handleLoginSuccess}
           />
         ) : (
           <Signup onSwitch={() => setIsLogin(true)} />

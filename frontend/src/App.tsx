@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import { isTokenExpired } from "./utils/jwt";
@@ -24,10 +25,37 @@ const App = () => {
 
   if (isAuthenticated === null) return <div>Loading...</div>;
 
-  return isAuthenticated ? (
-    <Home onLogout={handleLogout} />
-  ) : (
-    <Auth onLogin={() => setIsAuthenticated(true)} />
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* AUTH PAGE */}
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/home" />
+            ) : (
+              <Auth onLogin={() => setIsAuthenticated(true)} />
+            )
+          }
+        />
+
+        {/* HOME PAGE */}
+        <Route
+          path="/home"
+          element={
+            isAuthenticated ? (
+              <Home onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+
+        {/* FALLBACK */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./AuthForm.css";
 
 type Props = {
-  mode: 'login' | 'signup';
+  mode: "login" | "signup";
   onSubmit: (data: any) => Promise<any>;
 };
 
 const AuthForm: React.FC<Props> = ({ mode, onSubmit }) => {
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -23,68 +24,62 @@ const AuthForm: React.FC<Props> = ({ mode, onSubmit }) => {
     e.preventDefault();
     const res = await onSubmit(form);
 
-    // ✅ Store JWT after login/signup
     if (res?.data?.access_token) {
-      localStorage.setItem('token', res.data.access_token);
-      navigate('/homePage'); // redirect after login
+      localStorage.setItem("token", res.data.access_token);
+      navigate("/home"); // ✅ fixed
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          {mode === 'login' ? 'Welcome Back 👋' : 'Create Account 🚀'}
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>
+          {mode === "login" ? "Welcome Back 👋" : "Create Account 🚀"}
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {mode === 'signup' && (
+        <form onSubmit={handleSubmit}>
+          {mode === "signup" && (
             <input
               name="name"
               placeholder="Name"
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           )}
 
           <input
             name="email"
-            placeholder="Email"
             type="email"
+            placeholder="Email"
             onChange={handleChange}
             required
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
           <input
             name="password"
-            placeholder="Password"
             type="password"
+            placeholder="Password"
             onChange={handleChange}
             required
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition"
-          >
-            {mode === 'login' ? 'Login' : 'Signup'}
+          <button type="submit">
+            {mode === "login" ? "Login" : "Signup"}
           </button>
         </form>
 
-        {/* ✅ Switch between login/signup */}
-        <p className="text-center mt-4 text-sm">
-          {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
-          <button
+        <p>
+          {mode === "login"
+            ? "Don't have an account?"
+            : "Already have an account?"}
+
+          <span
             onClick={() =>
-              navigate(mode === 'login' ? '/signup' : '/')
+              navigate(mode === "login" ? "/signup" : "/")
             }
-            className="ml-2 text-blue-500 hover:underline"
           >
-            {mode === 'login' ? 'Signup' : 'Login'}
-          </button>
+            {mode === "login" ? " Signup" : " Login"}
+          </span>
         </p>
       </div>
     </div>
