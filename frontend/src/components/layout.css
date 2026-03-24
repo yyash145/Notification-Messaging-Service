@@ -1,0 +1,28 @@
+.layout {
+  display: flex;
+}
+
+.main {
+  margin-left: 220px;
+  width: 100%;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #1e293b;
+  color: white;
+}
+
+.content {
+  padding: 20px;
+  min-height: 80vh;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background: #1e293b;
+  color: white;
+}
