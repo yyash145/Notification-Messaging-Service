@@ -46,10 +46,12 @@ const User: React.FC = () => {
           <span className="user-value">{user.email}</span>
         </div>
 
-        <div className="user-row">
-          <span className="userlabel">Role:</span>
-          <span className="user-value">{user.role}</span>
-        </div>
+        {user.role === "SUPER_ADMIN" || user.role === "ADMIN" ? (
+          <div className="user-row">
+            <span className="userlabel">Role:</span>
+            <span className="user-value">{user.role}</span>
+          </div>
+        ) : null}
       </div>
     </div>
   );
