@@ -15,8 +15,9 @@ const Login: React.FC<Props> = ({ onSwitch, onLogin }) => {
 
     try {
       const data = await loginUser(email, password);
-
-      localStorage.setItem("token", data.access_token);
+      console.log("Login Data -", data);
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken)
 
       onLogin(); 
     } catch {

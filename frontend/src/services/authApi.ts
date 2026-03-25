@@ -1,3 +1,4 @@
+import axiosInstance from "./axiosInterface";
 const BASE_URL = "http://localhost:3000"; // your NestJS backend
 
 export const loginUser = async (email: string, password: string) => {
@@ -26,4 +27,13 @@ export const signupUser = async (data: any) => {
   if (!res.ok) throw new Error("Signup failed");
 
   return res.json();
+};
+
+
+export const refreshAccessToken = async (refreshToken: string) => {
+  const response = await axiosInstance.post(`${BASE_URL}/auth/refresh`, {
+    refreshToken: refreshToken,
+  });
+  console.log("AuthAPi Response -", response.data)
+  return response.data;
 };

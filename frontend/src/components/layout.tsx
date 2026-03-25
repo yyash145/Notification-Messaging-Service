@@ -1,33 +1,48 @@
-import React from "react";
-import Sidebar from "./sidebar";
-import { jwtDecode } from "jwt-decode";
-// import "";
+import { Outlet, useNavigate } from "react-router-dom";
+import "./layout.css"
 
-const Layout = ({ children, onLogout }: any) => {
-  const token = localStorage.getItem("token");
+type Props = {
+  onLogout: () => void;
+};
 
-  let user: any = null;
-  if (token) {
-    user = jwtDecode(token);
-  }
+const Layout: React.FC<Props> = ({ onLogout }) => {
+  const navigate = useNavigate();
+
+  const handleLogoutClick = () => {
+    onLogout();
+    navigate("/login");
+  };
 
   return (
-    <div className="layout">
-      <Sidebar />
+    <div className="page-container">
+      <div className="navbar">
+        <div className="nav-left">
+          <div className="logo" onClick={() => navigate("/home")}>
+            🚀 MyApp
+          </div>
 
-      <div className="main">
-        {/* Top Bar */}
-        <div className="topbar">
-          <div>Welcome {user?.email || "User"}</div>
-          <button onClick={onLogout}>Logout</button>
+          <div className="nav-links">
+            <span onClick={() => navigate("/upload")}>Upload Excel</span>
+            <span onClick={() => navigate("/contact")}>Contact Us</span>
+            <span onClick={() => navigate("/payment")}>Payment</span>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="content">{children}</div>
-
-        {/* Footer */}
-        <div className="footer">© 2026 MyApp</div>
+        <div className="nav-right">
+          <span onClick={() => navigate("/user")} className="user">
+            👤 User
+          </span>
+          <button onClick={handleLogoutClick} className="logout-btn">
+            Logout
+          </button>
+        </div>
       </div>
+
+      <div className="content">
+        <Outlet />
+      </div>
+
+      <div className="footer">© 2026 MyApp</div>
     </div>
   );
 };

@@ -1,10 +1,8 @@
-const Contact = () => {
+const Payment = () => {
   return (
     <div>
-      <h2>Contact Us</h2>
-      <textarea placeholder="Your message" />
-      <button>Send</button>
+      <h2>Payment Page in Progress</h2>
     </div>
   );
 };
-export default Contact;
+export default Payment;

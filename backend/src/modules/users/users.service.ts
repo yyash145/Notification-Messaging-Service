@@ -75,7 +75,11 @@ export class UsersService {
     }
   }
 
-  async removeAllUsers() {
-    return this.repo.deleteAll();
+  async removeAllUsers(currentUserId: number) {
+  return this.repo
+    .createQueryBuilder()
+    .delete()
+    .where("id != :id", { id: currentUserId })
+    .execute();
   }
 }

@@ -1,4 +1,4 @@
-const Profile = () => {
+const User = () => {
   return <h2>User Profile</h2>;
 };
-export default Profile;
+export default User;

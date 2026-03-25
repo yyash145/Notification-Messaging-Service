@@ -33,11 +33,12 @@ export class UsersController {
     return this.usersService.delete(id);
   }
 
+  @Delete('removeAllUsers')
   @Roles(Role.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Delete('removeAllUsers')
-  async removeAllUsers() {
-    return this.usersService.removeAllUsers();
+  async removeAllUsers(@Req() req) {
+    const currentUser = req.user;
+    return this.usersService.removeAllUsers(currentUser.id);
   }
 
   @Roles(Role.SUPER_ADMIN)
