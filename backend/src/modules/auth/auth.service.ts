@@ -70,6 +70,7 @@ export class AuthService {
       sub: user.id,
       email: user.email,
       role: user.role,
+      name: user.name
     };
 
     return {
@@ -79,10 +80,19 @@ export class AuthService {
     };
   }
 
-  async refresh(userId: string, refreshToken: string) {
+  async refreshAccessToken(userId: string, refreshToken: string) {
     const user = await this.validateRefreshToken(userId, refreshToken);
     if (!user) throw new UnauthorizedException();
 
-    return this.generateAccessToken(user);
-  }  
+    const accessToken = this.generateAccessToken(user).accessToken;
+    const newRefreshToken = crypto.randomUUID();
+
+    user.refreshToken = await bcrypt.hash(newRefreshToken, 10);
+    await this.usersService.save(user);
+
+    return {
+      accessToken,
+      refreshToken: newRefreshToken,
+    };
+  }
 }

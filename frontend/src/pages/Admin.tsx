@@ -1,8 +1,8 @@
-import axios from "axios";
+import axiosInstance from "../services/axiosInterface";
 
 const Admin = () => {
   const deleteAll = async () => {
-    await axios.delete("http://localhost:3000/users/removeAllUsers", {
+    await axiosInstance.delete("http://localhost:3000/users/removeAllUsers", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

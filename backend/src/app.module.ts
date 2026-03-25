@@ -16,6 +16,7 @@ import { typeOrmConfig } from './database/typeorm.config';
 import { PrismaModule } from '../prisma/prisma.module';
 import { TemplateModule } from './modules/template/template.module';
 import { UploadModule } from './modules/upload/upload.module';
+import { ContactModule } from './modules/contact/contact.module';
 
 @Module({
   imports: [
@@ -28,18 +29,19 @@ import { UploadModule } from './modules/upload/upload.module';
       isGlobal: true,   // makes env available everywhere
     }),
     AuthModule,
-    UsersModule,
+    BillingModule,
+    ContactModule,
+    ExcelModule,
+    HealthModule,
+    MessagingModule,
     PermissionsModule,
     PlansModule,
-    ExcelModule,
-    SchedulerModule,
-    MessagingModule,
-    BillingModule,
-    RetentionModule,
-    HealthModule,
     PrismaModule,
+    RetentionModule,
+    SchedulerModule,
     TemplateModule,
-    UploadModule
+    UploadModule,
+    UsersModule
   ],
 })
 export class AppModule {}
