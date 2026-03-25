@@ -13,7 +13,7 @@ export class ContactController {
     @Body() body: { message: string },
     @Req() req: any
   ) {
-    const userEmail = req.user.email; // 🔥 from JWT
+    const userEmail = req.user.email;
     const userName = req.user.name;
 
     return this.contactService.sendMessage(
