@@ -24,7 +24,7 @@ const User: React.FC = () => {
       } catch {
         console.error("Invalid token");
       }
-    }
+    } 
   }, []);
 
   if (!user) {
