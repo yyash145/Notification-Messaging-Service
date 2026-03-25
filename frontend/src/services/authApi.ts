@@ -34,6 +34,5 @@ export const refreshAccessToken = async (refreshToken: string) => {
   const response = await axiosInstance.post(`${BASE_URL}/auth/refresh`, {
     refreshToken: refreshToken,
   });
-  console.log("AuthAPi Response -", response.data)
   return response.data;
 };

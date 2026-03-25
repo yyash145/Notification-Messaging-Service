@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axiosInstance from "../services/axiosInterface";
-import "./contact.css";
+import "../index.css";
 
 const Contact = () => {
   const [message, setMessage] = useState("");

@@ -1,15 +1,264 @@
-@import "tailwindcss";
-
+/* ================= GLOBAL ================= */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f9;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ================= AUTH ================= */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  background: white;
+  padding: 40px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+}
+
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-box input {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.auth-box button {
+  margin-top: 15px;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth-box button:hover {
+  background: #0056b3;
+}
+
+.toggle-text {
+  margin-top: 15px;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.toggle-text:hover {
+  text-decoration: underline;
+}
+
+/* ================= LAYOUT (GLOBAL NAVBAR) ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 40px;
+  background: linear-gradient(90deg, #1e1e2f, #2a2a40);
+  color: white;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links span {
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-links span:hover {
+  color: #00d4ff;
+}
+
+.nav-links span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #00d4ff;
+  transition: width 0.3s ease;
+}
+
+.nav-links span:hover::after {
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user {
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.logout-btn {
+  background-color: #ff4d4f;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #d9363e;
+}
+
+/* PAGE STRUCTURE */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  margin-top: 65px;
+  padding: 20px;
+}
+
+.footer {
+  text-align: center;
+  padding: 12px;
+  background: #f5f5f5;
+}
+
+/* ================= CONTACT ================= */
+.contact-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.contact-container textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.contact-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #4cafef;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-container button:hover {
+  background-color: #3498db;
+}
+
+.status {
+  margin-top: 10px;
+}
+
+/* ================= USER PROFILE ================= */
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: #f5f7fa;
+}
+
+.user-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 350px;
+}
+
+.user-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.user-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.user-value {
+  color: #222;
 }

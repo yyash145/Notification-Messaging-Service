@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import "./layout.css"
+import "../index.css"
 
 type Props = {
   onLogout: () => void;
