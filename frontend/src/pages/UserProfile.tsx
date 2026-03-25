@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-type User = {
+type Users = {
   name: string;
   email: string;
   role: string;
 };
 
 const User: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<Users | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -24,7 +24,7 @@ const User: React.FC = () => {
       } catch {
         console.error("Invalid token");
       }
-    }
+    } 
   }, []);
 
   if (!user) {
@@ -53,39 +53,6 @@ const User: React.FC = () => {
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "80vh",
-    background: "#f5f7fa",
-  },
-  card: {
-    background: "#fff",
-    padding: "30px",
-    borderRadius: "12px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-    width: "350px",
-  },
-  title: {
-    marginBottom: "20px",
-    textAlign: "center" as const,
-  },
-  row: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "15px",
-  },
-  label: {
-    fontWeight: "bold",
-    color: "#555",
-  },
-  value: {
-    color: "#222",
-  },
 };
 
 export default User;

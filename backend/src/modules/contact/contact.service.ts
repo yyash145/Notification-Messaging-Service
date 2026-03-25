@@ -15,10 +15,9 @@ export class ContactService {
   await transporter.sendMail({
     from: process.env.FROM_EMAIL_ADDRESS,
     to: process.env.TO_EMAIL_ADDRESS,
-    subject: 'New Contact Message',
+    subject: 'Message From Notification Service App',
     text: `
       Message: ${message}
-      
       From: ${userName}
       Email: ${userEmail}
     `,
