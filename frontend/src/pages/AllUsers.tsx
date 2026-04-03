@@ -37,7 +37,7 @@ export default function AllUsers() {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  });
 
   const handleRoleChange = async (userId: number, role: string) => {
     console.log("UserId -", userId)
