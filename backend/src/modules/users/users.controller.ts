@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UseGuards, Req, Body, Delete, Query, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, UseGuards, Req, Body, Delete, Query, ParseUUIDPipe, Patch, Param } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decortor';
@@ -21,16 +21,19 @@ export class UsersController {
 
   @Roles(Role.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Post('setUserRole')
+  @Patch('setUserRole')
   setUserRole(@Body() dto: AdminCreateUserDto) {
     return this.usersService.setUserRoleByAdmin(dto);
   }
 
   @Roles(Role.SUPER_ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Delete('removeUser')
-  async deleteUser(@Query('id', new ParseUUIDPipe()) id: string,) {
-    return this.usersService.delete(id);
+  @Delete('removeUser/:id')
+  deleteUser(
+    @Param('id') id: string,
+    @Req() req: any
+  ) {
+    return this.usersService.delete(id, req.user.userId);
   }
 
   @Delete('removeAllUsers')
@@ -38,7 +41,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   async removeAllUsers(@Req() req) {
     const currentUser = req.user;
-    return this.usersService.removeAllUsers(currentUser.id);
+    return this.usersService.removeAllUsers(currentUser.userId);
   }
 
   @Roles(Role.SUPER_ADMIN)
