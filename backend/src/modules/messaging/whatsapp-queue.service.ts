@@ -4,7 +4,7 @@ import { PrismaService } from 'prisma/prisma.service';
 
 @Injectable()
 export class WhatsappQueueService {
-  private queue: Queue;
+  public queue: Queue;
 
   constructor(private readonly prisma: PrismaService) {
     this.queue = new Queue('whatsapp', {
