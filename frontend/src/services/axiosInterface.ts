@@ -32,7 +32,6 @@ axiosInstance.interceptors.response.use(
         const res = await axios.post("/auth/refresh", {
           refresh_token: refreshToken,
         });
-
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken); // if rotating
 

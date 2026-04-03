@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../../database/entities/user.entity';
@@ -40,14 +40,31 @@ export class UsersService {
     return this.repo.findOne({ where: { id } });
   }
 
-  async delete(id: string) {
-    const result = await this.repo.delete(id);
-
-    if (result.affected === 0) {
-      throw new NotFoundException('User not found');
+  async delete(id: string, currentUserId: string) {
+    // 🚫 Prevent self delete
+    console.log("Id -", id, " - ", currentUserId)
+    if (id === currentUserId) {
+      throw new BadRequestException("You cannot delete your own account");
     }
 
-    return { message: 'User deleted successfully' };
+    const userToDelete = await this.findById(id);
+
+    if (!userToDelete) {
+      throw new NotFoundException("User not found");
+    }
+
+    if (userToDelete.role === "SUPER_ADMIN") {
+      throw new ForbiddenException("Cannot delete SUPER_ADMIN");
+    }
+
+    const result = await this.repo.delete(id);
+
+
+    if (result.affected === 0) {
+      throw new NotFoundException("User not found");
+    }
+
+    return { message: "User deleted successfully" };
   }
 
   save(user: User) {

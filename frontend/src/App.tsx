@@ -8,6 +8,8 @@ import Contact from "./pages/contactUs";
 import Payment from "./pages/payment";
 import User from "./pages/UserProfile";
 import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
+import AllUsers from "./pages/AllUsers";
 
 const isTokenExpired = (token: string) => {
   try {
@@ -76,7 +78,9 @@ function App() {
           <Route path="upload" element={<Upload />} />
           <Route path="contact" element={<Contact />} />
           <Route path="payment" element={<Payment />} />
+          <Route path="admin" element={<Admin />} />
           <Route path="user" element={<User />} />
+          <Route path="allusers" element={<AllUsers />} />
         </Route>
 
         {/* 🔁 Catch all */}

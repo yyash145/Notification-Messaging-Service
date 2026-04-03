@@ -17,7 +17,7 @@ const User: React.FC = () => {
         const payload = JSON.parse(atob(token.split(".")[1]));
 
         setUser({
-          name: payload.name || "N/A",
+          name: payload.name || "user",
           email: payload.email,
           role: payload.role,
         });

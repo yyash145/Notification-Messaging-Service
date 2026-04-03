@@ -15,8 +15,11 @@ const Login: React.FC<Props> = ({ onSwitch, onLogin }) => {
 
     try {
       const data = await loginUser(email, password);
-      localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("refreshToken", data.refreshToken)
+      const accessToken = data.accessToken
+      const payload = JSON.parse(atob(accessToken.split(".")[1]));
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
+      localStorage.setItem("userRole", payload.role);
 
       onLogin(); 
     } catch {
