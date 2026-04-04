@@ -5,6 +5,8 @@ model Organization {
   clients      Client[]
   messageLogs  MessageLog[]
   subscription Subscription?
-  users        User[]
+  users        user[]
   messages     Message[]
+
+  @@map("Organization")
 }

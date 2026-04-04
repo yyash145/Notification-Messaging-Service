@@ -26,59 +26,55 @@ export class UploadService {
   }
 
   async processUpload(file: Express.Multer.File, user: any) {
-    const parsedRows = this.parseExcel(file); // your logic
+    const rows = this.parseExcel(file); // your logic
+    this.validateColumns(rows);
+    console.log("User -", user)
 
-    for (const row of parsedRows) {
-      const jobId = `${row.phone}-${Date.now()}`;
+    for (const row of rows) {
+      const jobId = `${row.Contact}-${Date.now()}`;
 
-      // ✅ Step 1: Save Message
-      const message = await this.prisma.message.create({
-        data: {
-          phone: row.phone,
-          content: row.message,
-          status: MessageStatus.QUEUED,
-          jobId,
-          scheduledAt: new Date(row.scheduledAt),
-          ...(user.organizationId
-            ? { organizationId: user.organizationId }
-            : { userId: user.id }),
-        },
-      });
+      // ✅ Step 1: Save Message to the DB
+      const data: any = {
+        phone: String(row.Contact),
+        content: row.Message,
+        status: MessageStatus.QUEUED,
+        jobId,
+        scheduledAt: new Date(row.Date) || new Date(Date.now()) || null,
+      };
+
+      // ✅ Add ONLY if present
+      if (user?.organizationId) {
+        data.organizationId = user.organizationId;
+      } else if (user?.userId) {
+        data.userId = user.userId;
+      } else {
+        throw new BadRequestException('User not found in request ❌');
+      }
+      console.log("Data - ", data)
+      console.log("Incoming data:", data);
+      console.log("userId being used:", data.userId);
+
+      const message = await this.prisma.message.create({ data });
+
+      console.log('✅ Saved message:', message);
 
       // ✅ Step 2: Push to Queue
       await this.whatsappQueue.queue.add(
         'send-message',
         {
-          phone: row.phone,
-          message: row.message,
+          phone: row.Contact,
+          message: row.Message,
           jobId,
         }
       );
 
+      console.log('✅ Pushed to queue:', message);
+
       // ✅ Step 3: Audit Log
       await this.auditLogService.logMessageSent(user, message.id);
+
+      console.log('✅ Saved to Audit Log', message);
     }
-  }
-
-  async processFile(file: Express.Multer.File) {
-    let data: any[] = [];
-
-    // ✅ Parse Excel
-    const workbook = XLSX.read(file.buffer, { type: 'buffer' });
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    data = XLSX.utils.sheet_to_json(sheet);
-
-    if (!data.length) {
-      throw new BadRequestException('File is empty ❌');
-    }
-
-    // ✅ Validate columns
-    this.validateColumns(data);
-
-    // ✅ STEP 4: Schedule jobs HERE
-    await this.scheduleMessages(data);
-
-    return data;
   }
 
   private validateColumns(data: any[]) {
@@ -93,27 +89,5 @@ export class UploadService {
     });
   }
 
-  private async scheduleMessages(data: any[]) {
-    for (const row of data) {
-      const sendTime = new Date(row.Date);
-
-      if (isNaN(sendTime.getTime())) {
-        throw new BadRequestException(`Invalid date: ${row.Date}`);
-      }
-
-      const delay = sendTime.getTime() - Date.now();
-
-      await this.whatsappQueue.queue.add(
-        'send-message',
-        {
-          phone: row.Phone,
-          message: row.Message,
-        },
-        {
-          delay: Math.max(delay, 0),
-        }
-      );
-    }
-  }
 
 }

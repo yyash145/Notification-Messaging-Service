@@ -16,7 +16,7 @@ export class MessagingController {
     },
   ) {
     return this.producer.sendMessage(
-      body.phone,
+      String(body.phone),
       body.message,
       body.delay,
       body.priority,

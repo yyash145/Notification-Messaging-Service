@@ -1,7 +1,8 @@
-model User {
+model user {
   id             String        @id @default(uuid())
   email          String        @unique
   password       String
+  name           String
   role           Role          @default(USER)
   refreshToken   String?
   createdAt      DateTime      @default(now())
@@ -10,4 +11,6 @@ model User {
   organization   Organization? @relation(fields: [organizationId], references: [id])
   templates      template[]
   messages       Message[]
+
+  @@map("user")
 }
