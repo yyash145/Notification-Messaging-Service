@@ -23,7 +23,7 @@ export class WhatsappQueueService {
   }) {
     const { phone, message, delay = 0, priority = 5 } = options;
 
-    const jobId = `${phone}-${Date.now()}`;
+    const jobId = `${String(phone)}-${Date.now()}`;
 
     // ✅ Save in DB
     await this.prisma.message.create({

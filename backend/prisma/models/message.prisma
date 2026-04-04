@@ -1,10 +1,18 @@
 model Message {
-  id        String        @id @default(uuid())
-  phone     String
-  content   String
-  status    MessageStatus
-  jobId     String        @unique
-  error     String?
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
+  id          String        @id @default(uuid())
+  phone       String
+  content     String
+  status      MessageStatus
+  jobId       String        @unique
+  error       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  scheduledAt DateTime?
+
+  organizationId String?
+  userId         String?
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  user           user?         @relation(fields: [userId], references: [id])
+
 }

@@ -4,6 +4,7 @@ model AuditLog {
   action    String
   entity    String
   entityId  String
+  logRetentionDays Int?
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  user      user     @relation(fields: [userId], references: [id])
 }

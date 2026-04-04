@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axiosInstance from "../services/axiosInterface";
-import "../index.css";
+import "../index";
 
 const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -37,10 +37,11 @@ const Upload = () => {
       });
 
       alert("Uploaded successfully ✅");
-      setFile(null);
-    } catch (err) {
-      alert("Upload failed ❌");
+    } catch (err: any) {
+      console.log("ERROR Message:", err.response?.data);
+      alert(err.response?.data?.message || "Upload failed ❌");
     } finally {
+      setFile(null);
       setLoading(false);
     }
   };

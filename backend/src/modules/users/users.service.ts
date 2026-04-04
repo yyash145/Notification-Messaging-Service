@@ -71,6 +71,10 @@ export class UsersService {
     return this.repo.save(user); // ✅ persists any updates
   }
 
+  async countUsers(): Promise<number> {
+    return this.repo.count();
+  }
+
   async setUserRoleByAdmin(dto: AdminCreateUserDto) {
     const existing = await this.findById(dto.id);
 

@@ -4,6 +4,7 @@ import {
   UseInterceptors,
   UploadedFile,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -17,18 +18,18 @@ export class UploadController {
   @Post()
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+  async uploadFile(
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: any // 👈 get user from JWT
+  ) {
     if (!file) {
       return { message: 'No file uploaded' };
     }
 
-    const data = await this.uploadService.processFile(file);
-
-    console.log('Parsed Data:', data);
+    await this.uploadService.processUpload(file, req.user); // ✅ CHANGE HERE
 
     return {
-      message: 'File processed successfully ✅',
-      rows: data.length,
+      message: 'File uploaded & saved successfully ✅',
     };
   }
 }

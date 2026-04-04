@@ -22,12 +22,15 @@ export class AuthService {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const userCount = await this.usersService.countUsers();
+    const role = userCount === 0 ? Role.SUPER_ADMIN : Role.USER;
+
     const user = await this.usersService.create({
       id: crypto.randomUUID(),
       name,
       email,
       password: hashedPassword,
-      role: Role.USER,
+      role: role,
       isActive: true,
     });
 
