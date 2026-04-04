@@ -11,8 +11,6 @@ import { MessagingModule } from './modules/messaging/messaging.module';
 import { BillingModule } from './modules/billing/billing.module';
 import { RetentionModule } from './modules/retention/retention.module';
 import { HealthModule } from './modules/health/health.module';
-import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
-import { typeOrmConfig } from './database/typeorm.config';
 import { PrismaModule } from '../prisma/prisma.module';
 import { TemplateModule } from './modules/template/template.module';
 import { UploadModule } from './modules/upload/upload.module';
@@ -21,7 +19,6 @@ import { AuditLogModule } from './modules/auditLog/auditlog.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeOrmConfig),
     ThrottlerModule.forRoot([{
       ttl: 60000,
       limit: 5,

@@ -71,7 +71,7 @@ export class UploadService {
       console.log('✅ Pushed to queue:', message);
 
       // ✅ Step 3: Audit Log
-      await this.auditLogService.logMessageSent(user, message.id);
+      await this.auditLogService.logMessageSent(user.userId, message.id);
 
       console.log('✅ Saved to Audit Log', message);
     }
