@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../index.css"
+import "../index"
 
 export default function AllUsers() {
   const [users, setUsers] = useState<any[]>([]);
@@ -40,8 +40,6 @@ export default function AllUsers() {
   });
 
   const handleRoleChange = async (userId: number, role: string) => {
-    console.log("UserId -", userId)
-    console.log("Role -", role)
     await fetch(`${BASE_URL}/users/setUserRole`, {
         method: "PATCH",
         headers: {

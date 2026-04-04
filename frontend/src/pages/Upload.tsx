@@ -38,7 +38,7 @@ const Upload = () => {
 
       alert("Uploaded successfully ✅");
     } catch (err: any) {
-      console.log("ERROR Message:", err.response?.data);
+      console.error("ERROR Message:", err.response?.data);
       alert(err.response?.data?.message || "Upload failed ❌");
     } finally {
       setFile(null);
