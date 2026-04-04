@@ -17,6 +17,7 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { TemplateModule } from './modules/template/template.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { ContactModule } from './modules/contact/contact.module';
+import { AuditLogModule } from './modules/auditLog/auditlog.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ContactModule } from './modules/contact/contact.module';
     ConfigModule.forRoot({
       isGlobal: true,   // makes env available everywhere
     }),
+    AuditLogModule,
     AuthModule,
     BillingModule,
     ContactModule,

@@ -6,4 +6,5 @@ model Organization {
   messageLogs  MessageLog[]
   subscription Subscription?
   users        User[]
+  messages     Message[]
 }

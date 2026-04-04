@@ -19,6 +19,7 @@ enum MessageLogStatus {
 
 enum MessageStatus {
   QUEUED
+  PENDING
   SENT
   FAILED
 }
