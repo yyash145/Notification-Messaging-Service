@@ -15,7 +15,10 @@ export class UploadService {
   ) {}
 
   parseExcel(file: Express.Multer.File): any[] {
-    const workbook = XLSX.read(file.buffer, { type: 'buffer' });
+    const workbook = XLSX.read(file.buffer, {
+       type: 'buffer',
+       cellDates: true 
+      });
 
     const sheetName = workbook.SheetNames[0]; // first sheet
     const sheet = workbook.Sheets[sheetName];
@@ -28,7 +31,6 @@ export class UploadService {
   async processUpload(file: Express.Multer.File, user: any) {
     const rows = this.parseExcel(file); // your logic
     this.validateColumns(rows);
-    console.log("User -", user)
 
     for (const row of rows) {
       const jobId = `${row.Contact}-${Date.now()}`;
@@ -50,13 +52,7 @@ export class UploadService {
       } else {
         throw new BadRequestException('User not found in request ❌');
       }
-      console.log("Data - ", data)
-      console.log("Incoming data:", data);
-      console.log("userId being used:", data.userId);
-
       const message = await this.prisma.message.create({ data });
-
-      console.log('✅ Saved message:', message);
 
       // ✅ Step 2: Push to Queue
       await this.whatsappQueue.queue.add(
@@ -68,12 +64,8 @@ export class UploadService {
         }
       );
 
-      console.log('✅ Pushed to queue:', message);
-
       // ✅ Step 3: Audit Log
       await this.auditLogService.logMessageSent(user.userId, message.id);
-
-      console.log('✅ Saved to Audit Log', message);
     }
   }
 
