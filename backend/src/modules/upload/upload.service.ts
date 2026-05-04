@@ -15,7 +15,10 @@ export class UploadService {
   ) {}
 
   parseExcel(file: Express.Multer.File): any[] {
-    const workbook = XLSX.read(file.buffer, { type: 'buffer' });
+    const workbook = XLSX.read(file.buffer, {
+       type: 'buffer',
+       cellDates: true 
+      });
 
     const sheetName = workbook.SheetNames[0]; // first sheet
     const sheet = workbook.Sheets[sheetName];

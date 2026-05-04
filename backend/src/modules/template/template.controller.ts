@@ -28,7 +28,7 @@ export class TemplateController{
       @Body() dto: CreateTemplateDto,
       @Req() Req,
     ) {
-        if (dto.category === 'GLOBAL' && !Req.user.isAdmin) {
+        if (dto.category !== 'GLOBAL' && !Req.user.isAdmin) {
             throw new ForbiddenException;
         }
       return this.templateService.createUserTemplate(dto, Req.user.id);

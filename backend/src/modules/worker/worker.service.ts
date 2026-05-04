@@ -2,13 +2,17 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Worker } from 'bullmq';
 import axios from 'axios';
 import { PrismaService } from 'prisma/prisma.service';
-
+import { RedisService } from 'src/redis/redis.service';
 
 @Injectable()
 export class WhatsappWorkerService implements OnModuleInit {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly redisService: RedisService
+  ) {}
   onModuleInit() {
     console.log('Worker starting...');
+    this.startHeartbeat();
 
     const worker = new Worker(
       'whatsapp',
@@ -38,16 +42,28 @@ export class WhatsappWorkerService implements OnModuleInit {
             data: { status: 'SENT' },
           });
 
-        } catch (error) {
-          console.error('❌ Send error:', error.response?.data || error.message);
+        } catch (error: unknown) {
+          if (axios.isAxiosError(error)) {
+            console.error('❌ Send error:', error.response?.data || error.message);
 
-          await this.prisma.message.update({
-            where: { jobId },
-            data: {
-              status: 'FAILED',
-              error: error.message,
-            },
-          });
+            await this.prisma.message.update({
+              where: { jobId },
+              data: {
+                status: 'FAILED',
+                error: error.message,
+              },
+            });
+          } else {
+            console.error('❌ Unknown error:', error);
+
+            await this.prisma.message.update({
+              where: { jobId },
+              data: {
+                status: 'FAILED',
+                error: 'Unknown error',
+              },
+            });
+          }
 
           throw error;
         }
@@ -55,7 +71,7 @@ export class WhatsappWorkerService implements OnModuleInit {
       {
         connection: {
           host: process.env.REDIS_HOST || 'localhost',
-          port: 6379,
+          port: Number(process.env.REDIS_PORT) || 6379,
         },
         limiter: {
           max: 10,
@@ -71,5 +87,15 @@ export class WhatsappWorkerService implements OnModuleInit {
     worker.on('failed', (job, err) => {
       console.error(`❌ Job ${job?.id} failed:`, err.message);
     });
+  }
+  private startHeartbeat() {
+    const redis = this.redisService.getClient();
+    setInterval(async () => {
+      try {
+        await redis.set('worker:heartbeat', Date.now(), 'EX', 15);
+      } catch (err) {
+        console.error('❌ Heartbeat failed:', err);
+      }
+    }, 5000);
   }
 }

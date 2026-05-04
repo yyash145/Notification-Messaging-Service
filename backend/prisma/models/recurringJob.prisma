@@ -1,0 +1,20 @@
+model RecurringJob {
+  id              String   @id @default(uuid())
+  clientId        String
+  phone           String
+  content         String
+
+  recurrenceType  RecurrenceType
+  interval        Int?      // for custom (e.g., every 3 months)
+
+  scheduledAt     DateTime  // base date (e.g., birthday / subscription start)
+  sendBeforeDays  Int?      // e.g., 1 → send 1 day before
+
+  lastRunAt       DateTime?
+  nextRunAt       DateTime
+
+  organizationId  String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

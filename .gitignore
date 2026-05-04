@@ -1,19 +1,20 @@
 .env
-html
-html/*
-#*.html
 node_modules
 package-lock.json
 
-backend/node_modules
 backend/dist
+backend/node_modules
 backend/.env
 backend/prisma/generate
 backend/test
 backend/package-lock.json
 
+docker/.dockerignore
+
 .DS_Store
 backend/.DS_Store
 frontend/.DS_Store
 
-
+.postman
+ppt_html
+postman/collections

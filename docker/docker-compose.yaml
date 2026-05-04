@@ -33,6 +33,11 @@ services:
     ports:
       - "3001:3000"
     command: node dist/src/main.js
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   worker:
     build:

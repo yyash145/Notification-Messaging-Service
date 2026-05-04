@@ -28,3 +28,10 @@ enum TemplateCategory {
   GLOBAL
   USER
 }
+
+enum RecurrenceType {
+  ONCE
+  MONTHLY
+  YEARLY
+  CUSTOM // for 3 months, 6 months etc
+}
