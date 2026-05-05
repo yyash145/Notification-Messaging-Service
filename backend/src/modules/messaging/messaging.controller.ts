@@ -11,6 +11,7 @@ export class MessagingController {
     body: {
       phone: string;
       message: string;
+      jobId: string,
       delay?: number;
       priority?: number;
     },
@@ -18,6 +19,7 @@ export class MessagingController {
     return this.producer.sendMessage(
       String(body.phone),
       body.message,
+      body.jobId,
       body.delay,
       body.priority,
     );

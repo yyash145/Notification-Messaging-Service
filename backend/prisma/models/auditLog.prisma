@@ -7,4 +7,6 @@ model AuditLog {
   logRetentionDays Int?
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, action, entity, entityId])
 }
