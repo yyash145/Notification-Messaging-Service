@@ -6,10 +6,7 @@ backend/dist
 backend/node_modules
 backend/.env
 backend/prisma/generate
-backend/test
-backend/package-lock.json
-
-docker/.dockerignore
+backend/prisma/migrations
 
 .DS_Store
 backend/.DS_Store
