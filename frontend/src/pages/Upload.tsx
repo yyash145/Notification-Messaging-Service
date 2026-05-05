@@ -21,10 +21,10 @@ const Upload = () => {
         },
       });
 
-      const { success, failed, errors, totalRows } = res.data;
+      const { success, failed, errors } = res.data;
       // ✅ CASE 1: All success
       if (failed === 0) {
-        alert(`✅ All ${success} rows uploaded successfully`);
+        alert(`✅ All rows uploaded successfully`);
       }
 
       // ⚠️ CASE 2: Partial success
