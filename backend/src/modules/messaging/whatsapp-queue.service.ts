@@ -18,29 +18,18 @@ export class WhatsappQueueService {
   async sendMessage(options: {
     phone: string;
     message: string;
+    jobId: string;
     delay?: number;
     priority?: number;
   }) {
-    const { phone, message, delay = 0, priority = 5 } = options;
-
-    const jobId = `${String(phone)}-${Date.now()}`;
-
-    // ✅ Save in DB
-    await this.prisma.message.create({
-      data: {
-        jobId,
-        phone,
-        content: message,
-        status: 'QUEUED',
-      },
-    });
+    const { phone, message, jobId, delay = 0, priority = 5 } = options;
 
     // ✅ Add to queue
     await this.queue.add(
       'send-message',
       { phone, message, jobId },
       {
-        jobId,
+        jobId,        // ensures de-duplication at queue level
         attempts: 3,
         backoff: {
           type: 'exponential',

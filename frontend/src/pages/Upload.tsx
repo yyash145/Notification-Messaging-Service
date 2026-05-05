@@ -6,21 +6,6 @@ const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleFileChange = (selectedFile: File) => {
-    const allowedTypes = [
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "text/csv",
-    ];
-
-    if (!allowedTypes.includes(selectedFile.type)) {
-      alert("Only Excel or CSV files are allowed");
-      return;
-    }
-
-    setFile(selectedFile);
-  };
-
   const handleUpload = async () => {
     if (!file) return alert("Please select a file");
 
@@ -30,13 +15,45 @@ const Upload = () => {
     try {
       setLoading(true);
 
-      await axiosInstance.post("http://localhost:3000/upload", formData, {
+      const res = await axiosInstance.post("http://localhost:3000/upload", formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
-      alert("Uploaded successfully ✅");
+      const { success, failed, errors } = res.data;
+      // ✅ CASE 1: All success
+      if (failed === 0) {
+        alert(`✅ All rows uploaded successfully`);
+      }
+
+      // ⚠️ CASE 2: Partial success
+      else if (success > 0) {
+        const errorPreview = errors
+          .slice(0, 3)
+          .map((e: any) => `Row ${e.row}: ${e.error}`)
+          .join("\n");
+
+        alert(
+          `⚠️ Uploaded with issues\n\n` +
+          `Success: ${success}\nFailed: ${failed}\n\n` +
+          `Errors:\n${errorPreview}\n\n` +
+          (errors.length > 3 ? `...and more` : "")
+        );
+      }
+
+      // ❌ CASE 3: Full failure
+      else {
+        const errorPreview = errors
+          .slice(0, 5)
+          .map((e: any) => `Row ${e.row}: ${e.error}`)
+          .join("\n");
+
+        alert(
+          `❌ Upload failed\n\n` +
+          `Errors:\n${errorPreview}`
+        );
+      }
     } catch (err: any) {
       console.error("ERROR Message:", err.response?.data);
       alert(err.response?.data?.message || "Upload failed ❌");
@@ -54,7 +71,10 @@ const Upload = () => {
       <label className="upload-box">
         <input
           type="file"
-          onChange={(e) => handleFileChange(e.target.files![0])}
+          onChange={(e) => {
+            setFile(e.target.files![0]);
+            e.target.value = "";
+          }}
           hidden
         />
 

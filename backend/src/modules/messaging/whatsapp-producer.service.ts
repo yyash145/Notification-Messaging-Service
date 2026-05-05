@@ -10,12 +10,14 @@ export class WhatsappProducerService {
   async sendMessage(
     phone: string,
     message: string,
+    jobId: string,
     delay?: number,
     priority?: number,
   ) {
     return this.whatsappQueueService.sendMessage({
       phone,
       message,
+      jobId,
       delay,
       priority,
     });

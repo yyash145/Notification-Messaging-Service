@@ -3,10 +3,10 @@ import { Role } from '@prisma/client';
 import { UUID } from 'crypto';
 
 export class AdminCreateUserDto {
-  id: UUID;
+  id!: UUID;
 
   @IsEnum(Role, {
     message: `Roles must be ${Object.values(Role).join(', ')}`,
   })
-  role: Role;
+  role!: Role;
 }

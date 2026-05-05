@@ -5,6 +5,7 @@ import {
   UploadedFile,
   UseGuards,
   Req,
+  BadRequestException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -17,19 +18,39 @@ export class UploadController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', {
+    limits: {
+      fileSize: 5 * 1024 * 1024, // 🔥 5MB limit
+    },
+    fileFilter: (req, file, cb) => {
+      const allowedTypes = [
+        'application/vnd.ms-excel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'text/csv',
+      ];
+
+      if (!allowedTypes.includes(file.mimetype)) {
+        return cb(
+          new BadRequestException('Only Excel and CSV files allowed'),
+          false
+        );
+      }
+
+      cb(null, true);
+    },
+  }))
   async uploadFile(
     @UploadedFile() file: Express.Multer.File,
     @Req() req: any // 👈 get user from JWT
   ) {
     if (!file) {
-      return { message: 'No file uploaded' };
-    }
+      throw new BadRequestException('No file uploaded ❌'); 
+    };
 
-    await this.uploadService.processUpload(file, req.user); // ✅ CHANGE HERE
+    const result = await this.uploadService.processUpload(file, req.user); // ✅ CHANGE HERE
 
     return {
-      message: 'File uploaded & saved successfully ✅',
+      ...result
     };
   }
 }

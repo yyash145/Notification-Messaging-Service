@@ -15,14 +15,14 @@ export enum TemplateCategory {
 export class CreateTemplateDto {
   @IsString()
   @IsNotEmpty()
-  displayName: string;
+  displayName!: string;
 
   @IsString()
   @IsNotEmpty()
-  whatsappTemplateName: string;
+  whatsappTemplateName!: string;
 
   @IsEnum(TemplateCategory)
-  category: TemplateCategory;
+  category!: TemplateCategory;
 
   @IsOptional()
   @IsArray()

@@ -12,7 +12,7 @@ export class AuditLogService {
     entity: string;
     entityId: string;
   }) {
-    return this.prisma.auditLog.create({
+    return this.prisma.auditLog.createMany({
       data: {
         userId: params.userId,
         action: params.action,
@@ -20,6 +20,7 @@ export class AuditLogService {
         entityId: params.entityId,
         logRetentionDays: 5
       },
+      skipDuplicates: true,
     });
   }
 
